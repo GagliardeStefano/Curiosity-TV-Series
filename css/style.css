@@ -1,0 +1,62 @@
+body::-webkit-scrollbar{
+    width: 1rem;
+}
+
+body::-webkit-scrollbar-track{
+    background: #212529 !important;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #41464b !important;
+    border-radius: 12px;
+}
+
+header{
+    height: 4rem;
+}
+
+.testo{
+    color: white;
+}
+
+.locandine{
+    width: 12rem !important;
+    cursor: pointer;
+}
+
+.logo{
+    width: 3rem;
+}
+
+.card{
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.radius-b{
+    border-radius: 16px !important;
+}
+
+footer{
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #303336;
+  color: white;
+  text-align: center;
+}
+
+.link-footer{
+    color: transparent !important;
+}
+
+.link-footer :hover{
+    font-size: 40px;
+    translate: 1.5s;
+}
+
+footer ion-icon{
+    font-size: 33px;
+    margin: 1rem;
+    color: white;
+}
