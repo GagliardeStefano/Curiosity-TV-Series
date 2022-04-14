@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#info">Informazioni</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#cast">Cast</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#footer">About us</a>
+                    <a class="nav-link" href="#stagioni">Stagioni</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#recensioni">Recensioni</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#footer">About us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./register.html">Accedi</a>
@@ -63,8 +63,8 @@
                     </div>
 
                     <div class="col-2" style="display: -webkit-box;">
-                    <ion-icon style="color: yellow; font-size: 2rem;" name="star-outline"></ion-icon>
-                    <h3 class="testo">8.5</h3>
+                        <ion-icon style="color: yellow; font-size: 2rem;" name="star-outline"></ion-icon>
+                        <h3 class="testo">8.5</h3>
                     </div>
                 </div>
             </div>
@@ -81,57 +81,157 @@
                 <div class="carousel-inner ">
                     <div class="carousel-item active">
 
-                        <a href="a" class="stretched-link" ></a>
                         <img src="./serieTv/dark/darkOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     
                     </div>
 
                     <div class="carousel-item">
-                        <a href="a" class="stretched-link" ></a>
                         <img src="./serieTv/dark/darkOrizzontale2.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     </div>
 
                     <div class="carousel-item">
 
-                        <a href="a" class="stretched-link" ></a>
                         <img src="./serieTv/dark/darkOrizzontale3.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                         
                     </div>
                 </div>
 
-                <div id="info"></div>
-                <div class="container">
-                    <div class="card-body ms-3">
-                        <div class="row">
-                            <div class="col-9 testo ">
-                                <h3>Trama</h3>
-                                <p>La scomparsa di due bambini in un piccolo villaggio in Germania mette in pericolo la vita e le relazioni di quattro famiglie. Le indagini per ritrovare i piccoli portano a galla torbidi segreti sugli abitanti del posto.</p>
-                            </div>
+                <div id="info" ></div>
+                <br> <br>
+                <section>    
+                    <div class="container">
+                        <div class="card-body ms-3">
+                            <div class="row row-cols-auto">
+                                <div class="col testo ">
+                                    <h3>Trama</h3>
+                                    <p>La scomparsa di due bambini in un piccolo villaggio in Germania mette in pericolo la vita e le relazioni di quattro famiglie. Le indagini per ritrovare i piccoli portano a galla torbidi segreti sugli abitanti del posto.</p>
+                                </div>
 
-                            <div class="col-3 testo">
-                                <h3>Categorie</h3>
-                                <p>Drammatico / Thriller <br> / Fantascienza / Giallo</p>
+                                <div class="col testo mt-5">
+                                    <h3>Categorie</h3>
+                                    <p>Drammatico / Thriller / Fantascienza / Giallo</p>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <button class="carousel-control-prev frecce" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next frecce" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+                
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+    <!--Sezione Episodi-->
+    <div id="stagioni"></div>
+    <br>
+    <section>
+        <div class="container mt-5 me-5">
+            <h2 class="testo text-start">Stagioni e Episodi | <p>Dark</p> </h2>
+            <div class="row row-cols-auto ms-1">
+                
+                <div class="form-check testo">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                      Stagione 1
+                    </label>
+                </div>
+
+                <div class="form-check testo">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                      Stagione 2
+                    </label>
+                </div>
+
+                <div class="form-check testo">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                    <label class="form-check-label" for="exampleRadios3">
+                      Stagione 3
+                    </label>
+                </div>
+            </div>
+
+            <h6 class="testo mt-5 ms-1">Anno: 2017</h6>
+
+            <div class="row mt-5 row-cols-auto">
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./serieTv/dark/darkE1S1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body testo">
+                            <div style="display: -webkit-box;" >
+                                <h4>1. Segreti</h4>
+                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                            </div>
+                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
                         </div>
                     </div>
                 </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-          </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./serieTv/dark/darkE1S1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body testo">
+                            <div style="display: -webkit-box;" >
+                                <h4>1. Segreti</h4>
+                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                            </div>
+                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./serieTv/dark/darkE1S1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body testo">
+                            <div style="display: -webkit-box;" >
+                                <h4>1. Segreti</h4>
+                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                            </div>
+                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./serieTv/dark/darkE1S1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body testo">
+                            <div style="display: -webkit-box;" >
+                                <h4>1. Segreti</h4>
+                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                            </div>
+                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./serieTv/dark/darkE1S1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body testo">
+                            <div style="display: -webkit-box;" >
+                                <h4>1. Segreti</h4>
+                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                            </div>
+                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         </div>
-      </section>
-
-
-    
-
+    </section>
     
 
 
