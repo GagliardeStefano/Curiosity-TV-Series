@@ -133,4 +133,41 @@ footer ion-icon{
     align-items: center;
     box-shadow: 0 4px 30px rgba(0,0,0,.05);
   }
-  
+
+
+.categorie{
+    background: white;
+    position: fixed;
+    top: 0;
+    width: 95rem;
+    height: 21rem;
+    z-index: 2000;
+}
+
+.categorie p{
+    color: black;
+}
+
+.categorie a{
+    color: black;
+    text-decoration: none;
+}
+
+.categorie a :hover{
+    color: gray;
+}
+
+.categorie button{
+    float: right;
+    margin-top: -2rem;
+    margin-right: 2rem;
+}
+
+.sfocatura{
+    background: #000000ba;
+    width: 95rem;
+    height: 53%;
+    z-index: 2000;
+    position: fixed;
+    bottom: 0;
+}
