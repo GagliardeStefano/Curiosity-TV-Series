@@ -56,7 +56,7 @@
     <!--Sezione Titolo & Voto-->
     <section >
         <div class="container">
-            <div class="row row-cols-auto ms-5">
+            <div class="row row-cols-auto">
                 <div class="col-4">
                     <div class="col">
                         <h1 class="testo">Dark</h1>
@@ -64,8 +64,12 @@
                     </div>
 
                     <div class="col-2" style="display: -webkit-box;">
-                        <ion-icon style="color: yellow; font-size: 2rem;" name="star-outline"></ion-icon>
-                        <h3 class="testo">8.5</h3>
+                        
+                        <h3 class="testo">4</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill star" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                        
                     </div>
                 </div>
             </div>
@@ -76,32 +80,17 @@
     <!--Sezione carousel-->
     <section>
         <div class="container ">
-          <div class="row">
-              <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                
-                <div class="carousel-inner ">
-                    <div class="carousel-item active">
+            <div class="row row-cols-auto">
 
-                        <img src="./serieTv/dark/darkOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                    
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="./serieTv/dark/darkOrizzontale2.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                    </div>
-
-                    <div class="carousel-item">
-
-                        <img src="./serieTv/dark/darkOrizzontale3.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                        
-                    </div>
+                <div class="col">
+                    <img src="./serieTv/dark/darkOrizzontale3.jpg" class="img-fluid w-100" alt="...">
                 </div>
 
                 <div id="info" ></div>
                 <br> <br>
                 <section>    
                     <div class="container">
-                        <div class="card-body ms-3">
+                        <div class="card-body">
                             <div class="row row-cols-auto">
                                 <div class="col testo ">
                                     <h3>Trama</h3>
@@ -117,15 +106,6 @@
                     </div>
                 </section>
                 
-                <button class="carousel-control-prev frecce" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next frecce" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-                
             </div>
           </div>
         </div>
@@ -136,7 +116,7 @@
     <div id="stagioni"></div>
     <br>
     <section>
-        <div class="container mt-5 me-5">
+        <div class="container mt-5">
             <h2 class="testo text-start">Stagioni e Episodi | <p>Dark</p> </h2>
             <div class="row row-cols-auto ms-1">
                 
@@ -162,7 +142,7 @@
                 </div>
             </div>
 
-            <h6 class="testo mt-5 ms-1">Anno: 2017</h6>
+            <h6 class="testo mt-5">Anno: 2017</h6>
 
             <div class="row mt-5 row-cols-auto">
 
@@ -237,9 +217,45 @@
 
 
       
-      
+    <!--Sezione Recensioni-->
+    <div id="recensioni"></div>
+    <br>
+    <section>
+        <div class="container mt-5">
+            <h2 class="testo">Recensioni</h2>
+            <div class="row">
 
+                <div class="col-6">
+                    <h4 class="testo">Aggiungi una recensione</h4>
 
+                    <div class="feedback">
+                        <div class="rating">
+                          <input type="radio" name="rating" id="rating-5">
+                          <label for="rating-5"></label>
+                          <input type="radio" name="rating" id="rating-4">
+                          <label for="rating-4"></label>
+                          <input type="radio" name="rating" id="rating-3">
+                          <label for="rating-3"></label>
+                          <input type="radio" name="rating" id="rating-2">
+                          <label for="rating-2"></label>
+                          <input type="radio" name="rating" id="rating-1">
+                          <label for="rating-1"></label>
+                        </div>
+                    </div>  
+                
+                    <div class="form-floating mt-2">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Recensione</label>
+                    </div>
+
+                    <div class="mt-1">
+                        <input class="btn btn-primary" type="submit" value="Invia">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 
 
@@ -287,7 +303,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
