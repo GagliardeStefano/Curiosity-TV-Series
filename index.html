@@ -34,7 +34,7 @@
                   <a class="nav-link" href="#top">Top</a>
                 </li>
                 <li class="nav-item">
-                  <a id="categorie" class="nav-link" onclick="functionCategorie()">Categorie</a>
+                  <a id="categorie" class="nav-link" onclick="functionCategorie(), functionSfocatura()">Categorie</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#footer">About us</a>
@@ -53,11 +53,11 @@
       </header>
 
       <!--Sezione Banner Categorie-->
-      <section id="sezioneCategoria">
-        <div class="categorie">
+      <section>
+        <div id="sezioneCategoria" class="categorie hidden-no">
           <div class="ms-5">
             <h2>Categorie</h2>
-            <button type="button" class="btn-close" aria-label="Close"></button>
+            <button onclick="functionCategorieNo(), functionSfocaturaNo()" type="button" class="btn-close" aria-label="Close"></button>
           </div>
 
           <div class="row row-cols-12 ms-5 mb-5 mt-5">
@@ -133,10 +133,14 @@
           
         </div>
 
-        <div class="sfocatura">
+      </section>
+
+      <section>
+          <div id="sezioneSfocatura" class="sfocatura hidden-no">
           <p>MLSMdm</p>
         </div>
       </section>
+
 
      <!--Sezione Carousel-->
       <section>
@@ -286,90 +290,6 @@
       </section>
 
       
-      <!-- Sezione Categorie 
-      <div id="categorie"></div>
-      <br>
-      <section>
-        <div class="container mt-1 me-5">
-          <h2 class="testo">Categorie</h2>
-          <div class="row row-cols-auto">
-
-            <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-            <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-            <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-           <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-          <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-           <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-           <div class="col mb-5">  
-              <div class="card" style="width: 18rem;">
-                <a href="#">
-                  <img src="./serieTv/PB/PBOrizzontale.jpg" class="card-img-top radius-b" alt="...">
-                  <h3 class="card-text testo position-absolute bottom-0 start-50 translate-middle-x">Storico</h3>
-                  <h4><span class="badge bg-secondary position-absolute top-0 end-0">4</span></h4>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-      -->
-
-
       <!--Sezione Footer-->
       <div id="footer"></div>
       <br>

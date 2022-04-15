@@ -132,7 +132,11 @@ footer ion-icon{
     flex-wrap: wrap;
     align-items: center;
     box-shadow: 0 4px 30px rgba(0,0,0,.05);
-  }
+}
+
+.nav-item a{
+    cursor: pointer;
+}
 
 
 .categorie{
@@ -170,4 +174,8 @@ footer ion-icon{
     z-index: 2000;
     position: fixed;
     bottom: 0;
+}
+
+.hidden-no{
+    visibility: hidden;
 }

@@ -1,5 +1,15 @@
 function functionCategorie(){
-    console.log("hhahsa")
-    document.getElementById("sezioneCategoria").setAttribute("hidden","false")
-    console.log("dopo")
+    document.getElementById("sezioneCategoria").style.visibility = "visible"
+}
+
+function functionSfocatura(){
+    document.getElementById("sezioneSfocatura").style.visibility = "visible"
+}
+
+function functionCategorieNo(){
+    document.getElementById("sezioneCategoria").style.visibility = "hidden"
+}
+
+function functionSfocaturaNo(){
+    document.getElementById("sezioneSfocatura").style.visibility = "hidden"
 }
