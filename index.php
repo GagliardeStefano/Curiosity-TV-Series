@@ -198,6 +198,12 @@
         </div>
       </section>
 
+      <?php
+        require './includes/serieDAO.php';
+
+        $serie = new $serieDAO(); 
+        $serie -> getSerie(); 
+      ?>
 
       <!-- Sezione Serie TV -->
       <div id="top"></div>
@@ -209,7 +215,7 @@
 
             <div class="col mb-5 me-4">
               <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
+                <img src=" <?php echo $serie -> locandina;?> " class="radius-b locandine zoom" alt="...">
               </a>
               <div class="card-body">
                 <h4 class="testo">Dark</h4>
