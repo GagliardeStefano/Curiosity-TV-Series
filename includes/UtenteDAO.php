@@ -2,7 +2,7 @@
 
 require 'connect.php';
 
-class Utente{
+class UtenteDAO{
 
 
 

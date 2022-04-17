@@ -165,10 +165,10 @@
                   <div class="carousel-item">
 
                     
-                    <img src="./serieTv/dark/DarkOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/witcher/witcherOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h1 class="testo">Dark</h1>
-                      <h2 class="testo fst-italic">2017 - 2020</h2>
+                      <h1 class="testo">The Witcher</h1>
+                      <h2 class="testo fst-italic">2020 - in corso...</h2>
                       <br>
                     </div>
 
@@ -176,10 +176,10 @@
                   <div class="carousel-item">
 
                     
-                    <img src="./serieTv/R&M/r&mOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/Vikings/VikingsOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h1 class="testo">The Witcher</h1>
-                      <h2 class="testo fst-italic">2017 - in corso...</h2>
+                      <h1 class="testo">Vikings</h1>
+                      <h2 class="testo fst-italic">2013 - 2021</h2>
                       <br>
                     </div>
 
@@ -217,7 +217,7 @@
 
             <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
                     <div class="col mb-5 me-4">
-                      <a href="./serie.html">
+                      <a href="./serie.html?id=<?php echo $risultato[$i] -> getID() ?>">
                         <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
                       </a>
                       <div class="card-body">

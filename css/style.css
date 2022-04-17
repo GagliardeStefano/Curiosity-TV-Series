@@ -26,7 +26,7 @@ header{
 .locandine{
     width: 12rem !important;
     cursor: pointer;
-    height: 19rem;
+    height: 19rem !important;
 }
 
 .logo{
