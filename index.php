@@ -200,9 +200,10 @@
 
       <?php
         require './includes/serieDAO.php';
+        require './includes/serie.php';
 
-        $serie = new $serieDAO(); 
-        $serie -> getSerie(); 
+        $serie = new SerieDAO; 
+        $risultato = $serie -> getSerie();
       ?>
 
       <!-- Sezione Serie TV -->
@@ -215,11 +216,11 @@
 
             <div class="col mb-5 me-4">
               <a href="./serie.html">
-                <img src=" <?php echo $serie -> locandina;?> " class="radius-b locandine zoom" alt="...">
+                <img src=" <?php echo $risultato -> getLocandina() ?> " class="radius-b locandine zoom" alt="...">
               </a>
               <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
+                <h4 class="testo"> <?php echo $risultato -> getNome()  ?> </h4>
+                <p class="testo"> <?php echo ($risultato -> getAnnoI()." - ".$risultato->getAnnoF() )  ?></p>
                 <p class="testo">Avventura / Thriller</p>
               </div>
             </div>
