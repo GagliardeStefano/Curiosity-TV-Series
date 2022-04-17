@@ -180,3 +180,16 @@ footer ion-icon{
 .hidden-no{
     visibility: hidden;
 }
+
+.categ-serie{
+    display: -webkit-inline-box;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.categ-serie p{
+    margin-right: 3rem;
+    padding: 7px;
+    border: 3px solid white;
+    border-radius: 22px;
+}

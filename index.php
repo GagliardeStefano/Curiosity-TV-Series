@@ -199,8 +199,11 @@
       </section>
 
       <?php
-        require './includes/serieDAO.php';
-        require './includes/serie.php';
+
+        session_start();
+
+        require './includes/SerieDAO.php';
+        require './includes/Serie.php';
 
         $serie = new SerieDAO; 
         $risultato = $serie -> getSerie(); 
@@ -217,7 +220,7 @@
 
             <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
                     <div class="col mb-5 me-4">
-                      <a href="./serie.html?id=<?php echo $risultato[$i] -> getID() ?>">
+                      <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
                         <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
                       </a>
                       <div class="card-body">

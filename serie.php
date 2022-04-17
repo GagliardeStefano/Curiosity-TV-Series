@@ -1,10 +1,30 @@
+<?php   
+
+    require "./includes/SerieDAO.php";
+    require "./includes/Serie.php";
+    require "./includes/Categoria.php";
+
+    $serie = new SerieDAO();
+        
+        
+    try{
+        $getID = $_GET["id"];
+        $ris = $serie -> getSerieID($getID);
+    }catch(Exception $e){
+        header("location: index.php");
+    }
+    
+    $risCateg = $serie -> getCateg($getID);
+    $risNumCateg = $serie -> getNumCateg($getID);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Serie TV</title>
+    <title> <?php echo $ris -> getNome()?> </title>
 
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" href="./css/style.css">
@@ -52,20 +72,20 @@
         </nav>
     </header>
 
-
+    
     <!--Sezione Titolo & Voto-->
     <section >
         <div class="container">
             <div class="row row-cols-auto">
                 <div class="col-4">
                     <div class="col">
-                        <h1 class="testo">Dark</h1>
-                        <p class="testo">2017 - 2020</p>
+                        <h1 class="testo">  <?php echo $ris -> getNome() ?></h1>
+                        <p class="testo"> <?php echo $ris -> getAnnoI()."-".$ris -> getAnnoF() ?>  </p>
                     </div>
 
                     <div class="col-2" style="display: -webkit-box;">
                         
-                        <h3 class="testo">4</h3>
+                        <h3 class="testo"> <?php echo $ris -> getVoto() ?> </h3>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill star" viewBox="0 0 16 16">
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                         </svg>
@@ -82,8 +102,8 @@
         <div class="container ">
             <div class="row row-cols-auto">
 
-                <div class="col">
-                    <img src="./serieTv/dark/DarkOrizzontale.jpg" class="img-fluid w-100" alt="...">
+                <div class="col-12" style="text-align: center;">
+                    <img src=" <?php echo $ris -> getimg()   ?> " class="img-fluid w-75" alt="...">
                 </div>
 
                 <div id="info" ></div>
@@ -94,12 +114,19 @@
                             <div class="row row-cols-auto">
                                 <div class="col testo ">
                                     <h3>Trama</h3>
-                                    <p>La scomparsa di due bambini in un piccolo villaggio in Germania mette in pericolo la vita e le relazioni di quattro famiglie. Le indagini per ritrovare i piccoli portano a galla torbidi segreti sugli abitanti del posto.</p>
+                                    <p> <?php echo $ris -> getTrama() ?> </p>
                                 </div>
 
                                 <div class="col testo mt-5">
+                                    
                                     <h3>Categorie</h3>
-                                    <p>Drammatico / Thriller / Fantascienza / Giallo</p>
+                                    <div class="categ-serie">
+                                        <?php for($i=0; $i < $risNumCateg; $i++){    ?>
+                                                
+                                            <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
+                                                
+                                        <?php } ?>  
+                                    </div>    
                                 </div>
                             </div>
                         </div>
@@ -117,7 +144,7 @@
     <br>
     <section>
         <div class="container mt-5">
-            <h2 class="testo text-start">Stagioni e Episodi | <p>Dark</p> </h2>
+            <h2 class="testo text-start">Stagioni e Episodi | <p class="testo"> <?php echo $ris -> getNome() ?>  </p> </h2>
             <div class="row row-cols-auto ms-1">
                 
                 <div class="form-check testo">
@@ -148,7 +175,7 @@
 
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./serieTv/dark/stagione1/E1.jpg" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body testo">
                             <div style="display: -webkit-box;" >
                                 <h4>1. Segreti</h4>
@@ -161,7 +188,7 @@
 
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./serieTv/dark/stagione1/E1.jpg" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body testo">
                             <div style="display: -webkit-box;" >
                                 <h4>1. Segreti</h4>
@@ -174,7 +201,7 @@
 
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./serieTv/dark/stagione1/E1.jpg" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body testo">
                             <div style="display: -webkit-box;" >
                                 <h4>1. Segreti</h4>
@@ -187,7 +214,7 @@
 
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./serieTv/dark/stagione1/E1.jpg" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body testo">
                             <div style="display: -webkit-box;" >
                                 <h4>1. Segreti</h4>
@@ -200,7 +227,7 @@
 
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./serieTv/dark/stagione1/E1.jpg" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body testo">
                             <div style="display: -webkit-box;" >
                                 <h4>1. Segreti</h4>
