@@ -154,7 +154,7 @@
                   <div class="carousel-item active">
 
                  
-                    <img src="./serieTv/ST/STorizonatle.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/ST/StOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h1 class="testo fst-italic">Stranger Things</h1>
                       <h2 class="testo fst-italic">2017 - in corso...</h2>
@@ -165,7 +165,7 @@
                   <div class="carousel-item">
 
                     
-                    <img src="./serieTv/dark/darkOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/dark/DarkOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h1 class="testo">Dark</h1>
                       <h2 class="testo fst-italic">2017 - 2020</h2>
@@ -176,7 +176,7 @@
                   <div class="carousel-item">
 
                     
-                    <img src="./serieTv/Witcher/witcherOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/R&M/r&mOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h1 class="testo">The Witcher</h1>
                       <h2 class="testo fst-italic">2017 - in corso...</h2>
@@ -203,7 +203,8 @@
         require './includes/serie.php';
 
         $serie = new SerieDAO; 
-        $risultato = $serie -> getSerie();
+        $risultato = $serie -> getSerie(); 
+      
       ?>
 
       <!-- Sezione Serie TV -->
@@ -214,82 +215,19 @@
           <h2 class="testo text-start">Top</h2>
           <div class="row row-cols-auto">
 
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src=" <?php echo $risultato -> getLocandina() ?> " class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo"> <?php echo $risultato -> getNome()  ?> </h4>
-                <p class="testo"> <?php echo ($risultato -> getAnnoI()." - ".$risultato->getAnnoF() )  ?></p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
-
-            <div class="col mb-5 me-4">
-              <a href="./serie.html">
-                <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo">Dark</h4>
-                <p class="testo">2017 - 2020</p>
-                <p class="testo">Avventura / Thriller</p>
-              </div>
-            </div>
+            <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
+                    <div class="col mb-5 me-4">
+                      <a href="./serie.html">
+                        <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
+                      </a>
+                      <div class="card-body">
+                        <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
+                        <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
+                        <p class="testo">Avventura / Thriller</p>
+                      </div>
+                    </div>
+            <?php } ?> 
+            
           </div>
         </div>
       </section>
