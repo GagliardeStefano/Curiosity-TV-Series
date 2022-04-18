@@ -200,13 +200,13 @@
 
       <?php
 
-        session_start();
-
         require './includes/SerieDAO.php';
         require './includes/Serie.php';
+        require './includes/Categoria.php';
 
         $serie = new SerieDAO; 
         $risultato = $serie -> getSerie(); 
+       
       
       ?>
 
@@ -219,18 +219,24 @@
           <div class="row row-cols-auto">
 
             <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
-                    <div class="col mb-5 me-4">
-                      <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
-                        <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
-                      </a>
-                      <div class="card-body">
-                        <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
-                        <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
-                        <p class="testo">Avventura / Thriller</p>
-                      </div>
-                    </div>
+            <div class="col mb-5 me-4">
+              <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
+                <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
+              </a>
+              <div class="card-body">
+                <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
+                <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
+
+                <?php  
+                  $ID = $risultato[$i] -> getID();
+                  $risCateg = $serie -> getCateg($ID);
+
+                ?>                       
+                        
+                <p class="testo"> <?php echo ($risCateg[1] -> getCategNome()." / ".$risCateg[2] -> getCategNome()) ?> </p> 
+              </div>
+            </div>
             <?php } ?> 
-            
           </div>
         </div>
       </section>
