@@ -6,17 +6,57 @@
         <link rel="stylesheet" href="./css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
-    <body class="bg-dark">
+    <body class="">
+
+        <?php
+            
+            echo "prima di tutto";
+            if(isset($_POST['email'], $_POST['password'])){
+
+                
+                echo "dopo controllo";
+
+                require "./includes/UtenteDAO.php";
+                require "./includes/Utente.php";
+                    
+                $utente = new UtenteDAO;
+    
+                $mail = $_POST['email'];
+                $paswd = $_POST['password'];
+
+                if($mail != null && $paswd != null){
+                    
+                    $existEmail = $utente -> existMail($mail);
+
+                    if($existEmail == true){
+
+                        $exist = $utente -> exist($mail, $paswd);
+                        if($exist == true){
+                            header("location: index.php");
+                        }else{
+                            $flagDatiUtente = 1;
+                        }
+
+                    }else{
+                        $flagNotExistEmail = 1;
+                    }
+                }else{
+                    $flagDati = 1;
+                }        
+            }
+        ?>
 
         <div class="d-grid mt-5 text-center">
-            <a href="index.html">
+            <a href="index.php">
                 <button class="btn btn-primary" type="button">Torna alla Home</button>
             </a>
         </div>
 
-        <form>
+        <form action="login.php" method="post">
             <div class="container mt-5"> 
                 <img src="./img/logo.png" class="logo" alt=""> 
                 <h1 class="testo">Login</h1>  
@@ -24,14 +64,14 @@
 
                     <div class="col mb-5">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="E-mail">
+                            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="E-mail">
                             <label for="floatingInput">Email</label>
                         </div>
                     </div>
 
                     <div class="col mb-5">
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
                     </div>
@@ -41,12 +81,46 @@
                     </div>
 
                     <div class="col-6 text-end ">
-                        <a class="btn btn-primary" href="register.html" role="button">Registrazione</a>
+                        <a class="btn btn-primary" href="register.html" role="button">Vai alla Registrazione</a>
                     </div>
 
                 </div>
             </div>
         </form>
+
+        <?php if(isset($flagDati)){ ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Inserisci tutti i dati'
+                    })
+                </script>
+        <?php   } ?>
+
+        
+        <?php if(isset($flagNotExistEmail)){ ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email non registrata',
+                        footer: '<a href="register.php">Non hai un account?</a>'
+                    })
+                </script>
+        <?php   } ?>
+
+        
+        <?php if(isset($flagDatiUtente)){ ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email e Password errati',
+                        footer: '<a href="update.php">Hai dimenticato la tua Password?</a>'
+                    })
+                </script>
+        <?php   } ?>
             
 
 
