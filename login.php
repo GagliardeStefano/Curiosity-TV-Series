@@ -14,11 +14,10 @@
 
         <?php
             
-            echo "prima di tutto";
+            
             if(isset($_POST['email'], $_POST['password'])){
 
                 
-                echo "dopo controllo";
 
                 require "./includes/UtenteDAO.php";
                 require "./includes/Utente.php";
@@ -28,25 +27,39 @@
                 $mail = $_POST['email'];
                 $paswd = $_POST['password'];
 
-                if($mail != null && $paswd != null){
-                    
-                    $existEmail = $utente -> existMail($mail);
+                $arrayErrori = [];
 
-                    if($existEmail == true){
-
-                        $exist = $utente -> exist($mail, $paswd);
-                        if($exist == true){
-                            header("location: index.php");
-                        }else{
-                            $flagDatiUtente = 1;
-                        }
-
-                    }else{
-                        $flagNotExistEmail = 1;
-                    }
+                if(isset($mail)){
+                    //
                 }else{
-                    $flagDati = 1;
-                }        
+                    $flagMail = "Inserisci l'email -- ";
+                    array_push($arrayErrori, $flagMail);
+                }
+
+                if(isset($paswd)){
+                    //
+                }else{
+                    $flagPass = "Inserisci la password -- ";
+                    array_push($arrayErrori, $flagPass);
+                }
+
+
+                $existEmail = $utente -> existMail($mail);
+                if($existEmail == true){
+                    //
+                }else{
+                    $flagExistMail = "L'email non è registrata -- ";
+                    array_push($arrayErrori, $flagExistMail);
+                }
+
+                $exist = $utente -> exist($mail, $paswd);
+                if($exist == true){
+                    //
+                }else{
+                    $flagDatiUtente = "Email e Password errati -- ";
+                    array_push($arrayErrori, $flagDatiUtente);
+                }
+        
             }
         ?>
 
@@ -81,48 +94,20 @@
                     </div>
 
                     <div class="col-6 text-end ">
-                        <a class="btn btn-primary" href="register.html" role="button">Vai alla Registrazione</a>
+                        <a class="btn btn-primary" href="register.php" role="button">Vai alla Registrazione</a>
                     </div>
 
                 </div>
             </div>
         </form>
 
-        <?php if(isset($flagDati)){ ?>
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Inserisci tutti i dati'
-                    })
-                </script>
-        <?php   } ?>
-
-        
-        <?php if(isset($flagNotExistEmail)){ ?>
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Email non registrata',
-                        footer: '<a href="register.php">Non hai un account?</a>'
-                    })
-                </script>
-        <?php   } ?>
-
-        
-        <?php if(isset($flagDatiUtente)){ ?>
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Email e Password errati',
-                        footer: '<a href="update.php">Hai dimenticato la tua Password?</a>'
-                    })
-                </script>
-        <?php   } ?>
-            
-
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text:'<?php for($i=0; $i < count($arrayErrori); $i++) echo $arrayErrori[$i]?>' 
+            })
+        </script>
 
 
 

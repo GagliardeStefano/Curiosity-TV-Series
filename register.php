@@ -10,7 +10,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
-    <body class="bg-dark">
+    <body class="">
 
     <?php 
 
@@ -30,22 +30,45 @@
             $mail = $_POST['mail'];
             $paswd = $_POST['pwd'];
 
-            if($nome != null && $cognome != null && $mail != null && $paswd != null){
-                
-                $exist = $utente -> existMail($mail);
-        
+            $arrayErrori = [""];
 
-                if($exist == true){
-                    $flagEmailExist = 1;
-        
-                }else{
-        
-                    $inserisci = $utente -> insertUtente($nome, $cognome, $mail, $paswd);
-                    header("location: index.php");
-                }
+            if($nome != null){
+                //
             }else{
-                $flagDati = 1;
-            }        
+                $flagNome = "Inserisci un nome -- ";
+                array_push($arrayErrori, $flagNome);
+            }
+
+            if($cognome != null){
+                //
+            }else{
+                $flagCognome = "Inserisci un cognome -- ";
+                array_push($arrayErrori, $flagCognome);
+            }
+
+            if($mail != null){
+                //
+            }else{
+                $flagMail = "Inserisci un email -- ";
+                array_push($arrayErrori, $flagMail);
+            }
+
+            if($paswd != null){
+                //
+            }else{
+                $flagPwd = "Inserisci una password -- ";
+                array_push($arrayErrori, $flagPwd);
+            }
+
+
+            $exist = $utente -> existMail($mail);
+            if($exist == true){
+                $flagExist = "Email già registrata -- ";
+                array_push($arrayErrori, $flagExist);
+            }else{
+                //
+            }
+        
         }
 
     ?>
@@ -101,26 +124,17 @@
 
                 </div>
 
+                 
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text:'<?php for($i=0; $i < count($arrayErrori); $i++) echo $arrayErrori[$i]?>' 
+                    })
+                </script>
+                
+                  
 
-                <?php if(isset($flagDati)){ ?>
-                    <script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Inserisci tutti i dati'
-                        })
-                    </script>
-                <?php   } ?>
-
-                <?php if(isset($flagEmailExist)){ ?>
-                    <script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Email già registrata'
-                        })
-                    </script>
-                <?php   } ?>
 
             </div>
         </form>
