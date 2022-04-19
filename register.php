@@ -18,7 +18,7 @@
             </a>
         </div>
 
-        <form>
+        <form action="" method="post">
             <div class="container mt-5"> 
                 <img src="./img/logo.png" class="logo" alt=""> 
                 <h1 class="testo">Registrazione</h1>  
@@ -26,28 +26,28 @@
 
                     <div class="col mb-5">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control " id="floatingInput" placeholder="Nome">
+                            <input type="text" class="form-control" name="nome" id="floatingInput" placeholder="Nome">
                             <label for="floatingInput">Nome</label>
                         </div>
                     </div>
 
                     <div class="col mb-5">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Cognome">
+                            <input type="text" class="form-control" name="cognome" id="floatingInput" placeholder="Cognome">
                             <label for="floatingInput">Cognome</label>
                         </div> 
                     </div>
 
                     <div class="col mb-5">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="E-mail">
+                            <input type="email" class="form-control" name="mail" id="floatingInput" placeholder="E-mail">
                             <label for="floatingInput">Email</label>
                         </div>
                     </div>
 
                     <div class="col mb-5">
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" name="pwd" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
                     </div>
@@ -63,6 +63,25 @@
                 </div>
             </div>
         </form>
+
+
+
+        <?php 
+        
+            require "./includes/UtenteDAO.php";
+            
+        
+            if(isset($_POST['submit'])){
+
+                $nome = $_POST['nome'];
+                $cognome = $_POST['cognome'];
+                $mail = $_POST['mail'];
+                $paswd = $_POST['pwd'];
+
+
+            }
+        
+        ?>
             
 
 

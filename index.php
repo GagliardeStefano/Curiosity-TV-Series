@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" sizes="16x16">
         <link rel="stylesheet" href="./css/style.css">
         <!-- Bootstrap CSS -->
@@ -40,7 +40,7 @@
                   <a class="nav-link" href="#footer">About us</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./register.html">Accedi</a>
+                  <a class="nav-link" href="./register.php">Accedi</a>
                 </li>
               </ul>
               <form class="d-flex">
