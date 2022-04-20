@@ -134,8 +134,12 @@
     <div id="sezioneSfocatura" class="sfocatura hidden-no"></div>
   </section>
 
-  <div id="top"></div>
-  <br>
+
+  
+
+
+
+  <!--Sezione Serie TV-->
   <section>
     <div class="container mt-5 me-5">
       <h2 class="testo text-start">Categoria: Avventura</h2>
@@ -223,7 +227,7 @@
 
 
 
-
+  <!--Sezione footer-->
   <div id="footer"></div>
       <br>
       <section>

@@ -3,8 +3,10 @@
     require "./includes/SerieDAO.php";
     require "./includes/Serie.php";
     require "./includes/Categoria.php";
+    require './includes/CategoriaDAO.php';
 
     $serie = new SerieDAO();
+    $categoria = new CategoriaDAO;
         
         
     try{
@@ -14,8 +16,8 @@
         header("location: index.php");
     }
     
-    $risCateg = $serie -> getCateg($getID);
-    $risNumCateg = $serie -> getNumCateg($getID);
+    $risCateg = $categoria -> getCateg($getID);
+    $risNumCateg = $categoria -> getNumCateg($getID);
 ?>
 
 <!DOCTYPE html>

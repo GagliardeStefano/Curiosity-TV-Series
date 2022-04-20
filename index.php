@@ -202,9 +202,11 @@
 
         require './includes/SerieDAO.php';
         require './includes/Serie.php';
+        require './includes/CategoriaDAO.php';
         require './includes/Categoria.php';
 
         $serie = new SerieDAO; 
+        $categoria = new CategoriaDAO;
         $risultato = $serie -> getSerie(); 
        
       
@@ -229,7 +231,7 @@
 
                 <?php  
                   $ID = $risultato[$i] -> getID();
-                  $risCateg = $serie -> getCateg($ID);
+                  $risCateg = $categoria -> getCateg($ID);
 
                 ?>                       
                         
