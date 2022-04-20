@@ -201,9 +201,9 @@
       <?php
 
         require './includes/SerieDAO.php';
-        require './includes/Serie.php';
+        require './includes/SerieClass.php';
         require './includes/CategoriaDAO.php';
-        require './includes/Categoria.php';
+        require './includes/CategoriaClass.php';
 
         $serie = new SerieDAO; 
         $categoria = new CategoriaDAO;
@@ -221,23 +221,23 @@
           <div class="row row-cols-auto">
 
             <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
-            <div class="col mb-5 me-4">
-              <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
-                <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
-              </a>
-              <div class="card-body">
-                <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
-                <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
+              <div class="col mb-5 me-4">
+                <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
+                  <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
+                </a>
+                <div class="card-body">
+                  <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
 
-                <?php  
-                  $ID = $risultato[$i] -> getID();
-                  $risCateg = $categoria -> getCateg($ID);
+                  <?php  
+                    $ID = $risultato[$i] -> getID();
+                    $risCateg = $categoria -> getCateg($ID);
 
-                ?>                       
-                        
-                <p class="testo"> <?php echo ($risCateg[1] -> getCategNome()." / ".$risCateg[2] -> getCategNome()) ?> </p> 
+                  ?>                       
+                          
+                  <p class="testo"> <?php echo ($risCateg[1] -> getCategNome()." / ".$risCateg[2] -> getCategNome()) ?> </p> 
+                </div>
               </div>
-            </div>
             <?php } ?> 
           </div>
         </div>

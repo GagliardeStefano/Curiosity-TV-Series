@@ -1,3 +1,14 @@
+<?php 
+
+  require './includes/CategoriaDAO.php';
+  require './includes/CategoriaClass.php';
+  require './includes/SerieDAO.php';
+  require './includes/SerieClass.php';
+
+  
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +146,7 @@
   </section>
 
 
-  
+
 
 
 
@@ -144,6 +155,8 @@
     <div class="container mt-5 me-5">
       <h2 class="testo text-start">Categoria: Avventura</h2>
       <div class="row row-cols-auto">
+
+
 
         <div class="col mb-5 me-4 mt-4">
           <a href="./serie.html">
@@ -156,71 +169,6 @@
           </div>
         </div>
 
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
-
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
-
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
-
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
-
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
-
-       <div class="col mb-5 me-4 mt-4">
-          <a href="./serie.html">
-            <img src="./serieTv/dark/DarkLocandina.jpg" class="radius-b locandine zoom" alt="...">
-          </a>
-          <div class="card-body">
-            <h4 class="testo">Dark</h4>
-            <p class="testo">2017 - 2020</p>
-            <p class="testo">Avventura / Thriller</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>

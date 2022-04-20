@@ -1,8 +1,8 @@
 <?php   
 
     require "./includes/SerieDAO.php";
-    require "./includes/Serie.php";
-    require "./includes/Categoria.php";
+    require "./includes/SerieClass.php";
+    require "./includes/CategoriaClass.php";
     require './includes/CategoriaDAO.php';
 
     $serie = new SerieDAO();

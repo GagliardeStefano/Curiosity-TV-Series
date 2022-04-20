@@ -19,7 +19,7 @@
             if(isset($_POST['email'], $_POST['checkEmail'], $_POST['newPasswd'], $_POST['checkNewPasswd'])){
                 
                 require "./includes/UtenteDAO.php";
-                require "./includes/Utente.php";
+                require "./includes/UtenteClass.php";
                     
                 $utente = new UtenteDAO;
 

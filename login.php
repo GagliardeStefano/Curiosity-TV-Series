@@ -20,7 +20,7 @@
                 
 
                 require "./includes/UtenteDAO.php";
-                require "./includes/Utente.php";
+                require "./includes/UtenteClass.php";
                     
                 $utente = new UtenteDAO;
     
