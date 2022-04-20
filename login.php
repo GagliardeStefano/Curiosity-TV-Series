@@ -27,39 +27,41 @@
                 $mail = $_POST['email'];
                 $paswd = $_POST['password'];
 
-                $arrayErrori = [];
+                $arrayErroriLogin = [];
 
-                if(isset($mail)){
+                if($mail != null){
                     //
                 }else{
-                    $flagMail = "Inserisci l'email -- ";
-                    array_push($arrayErrori, $flagMail);
+                    $flagMail = "Inserisci un email -- ";
+                    array_push($arrayErroriLogin, $flagMail);
                 }
 
-                if(isset($paswd)){
+                if($paswd != null){
                     //
                 }else{
-                    $flagPass = "Inserisci la password -- ";
-                    array_push($arrayErrori, $flagPass);
+                    $flagPass = "Inserisci una password -- ";
+                    array_push($arrayErroriLogin, $flagPass);
                 }
 
-
-                $existEmail = $utente -> existMail($mail);
-                if($existEmail == true){
-                    //
-                }else{
-                    $flagExistMail = "L'email non è registrata -- ";
-                    array_push($arrayErrori, $flagExistMail);
-                }
-
-                $exist = $utente -> exist($mail, $paswd);
+                $exist = $utente -> existMail($mail);
                 if($exist == true){
                     //
                 }else{
-                    $flagDatiUtente = "Email e Password errati -- ";
-                    array_push($arrayErrori, $flagDatiUtente);
+                    $flagExistMail = "Email non registrata -- ";
+                    array_push($arrayErroriLogin, $flagExistMail);
                 }
-        
+
+                $existDati = $utente -> exist($mail, $paswd);
+                if($existDati == true){
+                    //
+                }else{
+                    $flagDatiUtente = "Email e Password errati -- ";
+                    array_push($arrayErroriLogin, $flagDatiUtente);
+                }
+
+                if($arrayErroriLogin == null){
+                    header("location: index.php");
+                }
             }
         ?>
 
@@ -95,7 +97,10 @@
 
                     <div class="col-6 text-end ">
                         <a class="btn btn-primary" href="register.php" role="button">Vai alla Registrazione</a>
+                        <a class="btn btn-primary" href="update.php" role="button">Password dimenticata?</a>
                     </div>
+
+
 
                 </div>
             </div>
@@ -105,7 +110,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text:'<?php for($i=0; $i < count($arrayErrori); $i++) echo $arrayErrori[$i]?>' 
+                text:'<?php for($i=0; $i < count($arrayErroriLogin, COUNT_NORMAL); $i++){ echo $arrayErroriLogin[$i]; }?>' 
             })
         </script>
 

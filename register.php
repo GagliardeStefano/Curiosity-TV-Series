@@ -30,43 +30,48 @@
             $mail = $_POST['mail'];
             $paswd = $_POST['pwd'];
 
-            $arrayErrori = [""];
+            $arrayErroriReg = [];
 
             if($nome != null){
                 //
             }else{
                 $flagNome = "Inserisci un nome -- ";
-                array_push($arrayErrori, $flagNome);
+                array_push($arrayErroriReg, $flagNome);
             }
 
             if($cognome != null){
                 //
             }else{
                 $flagCognome = "Inserisci un cognome -- ";
-                array_push($arrayErrori, $flagCognome);
+                array_push($arrayErroriReg, $flagCognome);
             }
 
             if($mail != null){
                 //
             }else{
                 $flagMail = "Inserisci un email -- ";
-                array_push($arrayErrori, $flagMail);
+                array_push($arrayErroriReg, $flagMail);
             }
 
             if($paswd != null){
                 //
             }else{
                 $flagPwd = "Inserisci una password -- ";
-                array_push($arrayErrori, $flagPwd);
+                array_push($arrayErroriReg, $flagPwd);
             }
 
 
             $exist = $utente -> existMail($mail);
             if($exist == true){
                 $flagExist = "Email già registrata -- ";
-                array_push($arrayErrori, $flagExist);
+                array_push($arrayErroriReg, $flagExist);
             }else{
                 //
+            }
+
+            if($arrayErroriReg == null){
+                $utente -> insertUtente($nome, $cognome, $mail, $paswd);
+                header("location: index.php");
             }
         
         }
@@ -123,23 +128,16 @@
                     </div>
 
                 </div>
-
-                 
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text:'<?php for($i=0; $i < count($arrayErrori); $i++) echo $arrayErrori[$i]?>' 
-                    })
-                </script>
-                
-                  
-
-
             </div>
         </form>
 
-       
+       <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text:'<?php for($i=0; $i < count($arrayErroriReg, COUNT_NORMAL); $i++){ echo $arrayErroriReg[$i]; }?>' 
+            })
+        </script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

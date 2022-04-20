@@ -1,15 +1,15 @@
 <html>
     <head>
+        <title>Update</title>    
 
-            
         <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" sizes="16x16">
         <link rel="stylesheet" href="./css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-        
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <title>Aggiorna</title>
+        
     </head>
 
     <body>
@@ -28,58 +28,65 @@
                 $newPwd = $_POST['newPasswd'];
                 $checkNewPwd = $_POST['checkNewPasswd'];
 
-                $arrayErrori = [];
+                $arrayErroriUpdate = [];
 
-                if(isset($mail)){
+                if($mail != null){
                     //
                 }else{
-                    $flagMail = "Inserisci l'email -- ";
-                    array_push($arrayErrori, $flagMail);
-                }
+                    $flagMail = "Inserisci l`email -- ";
+                    array_push($arrayErroriUpdate, $flagMail);
+                } 
 
-                if(isset($checkMail)){
+                if($checkMail != null){
                     //
                 }else{
-                    $flagCheckMail = "Inserisci l'email di conferma -- ";
-                    array_push($arrayErrori, $flagCheckMail);
+                    $flagCheckMail = "Inserisci l`email di conferma -- ";
+                    array_push($arrayErroriUpdate, $checkMail);
                 }
 
-                if(isset($newPwd)){
+                if($newPwd != null){
                     //
                 }else{
-                    $flagPwd = "Inserisci la nuova Password -- ";
-                    array_push($arrayErrori, $flagPwd);
+                    $flagPass = "Inserisci la nuova Password -- ";
+                    array_push($arrayErroriUpdate, $flagPass);
                 }
 
-                if(isset($checkNewPwd)){
+                if($checkNewPwd != null){
                     //
                 }else{
-                    $flagCheckPwd = "Inserisci la Password di conferma -- ";
-                    array_push($arrayErrori, $flagCheckPwd);
+                    $flagCheckPass = "Inserisci la password di conferma -- ";
+                    array_push($arrayErroriUpdate, $flagCheckPass);
                 }
 
-                $utente -> existMail($mail);
-                if($utente == true){
+                $exist = $utente -> existMail($mail);
+                if($exist == true){
                     //
                 }else{
-                    $flagExist = "L'email inserita non è registrata -- ";
-                    array_push($arrayErrori, $flagExist);
+                    $flagExist = "L`email non e` registrata -- ";
+                    array_push($arrayErroriUpdate, $flagExist);
                 }
 
-                if($mail == $checkMail){
+                if($mail == $checkMail || $checkMail == $mail){
                     //
                 }else{
-                    $flagEqualsEmail = "L'email e l'email di conferma non combaciano -- ";
-                    array_push($arrayErrori, $flagEqualsEmail);
+                    $flagEqualsMail = "L`email e l`email di conferma non combaciano -- ";
+                    array_push($arrayErroriUpdate, $flagEqualsMail);
                 }
 
-                if($newPwd == $checkNewPwd){
+                if($newPwd == $checkNewPwd || $checkNewPwd == $newPwd){
                     //
                 }else{
-                    $flagEqualsPwd = "La password e la password di conferma non combaciano -- ";
-                    array_push($arrayErrori, $flagEqualsPwd);
+                    $flagEqualsPass = "La Password e la Password di conferma non combaciano -- ";
+                    array_push($arrayErroriUpdate, $flagEqualsPass);
                 }
-               
+
+                if($arrayErroriUpdate == null){
+                    
+                    $utente -> ChangePass($mail, $newPwd);
+                    header("location: index.php");
+                }
+                
+                print_r($arrayErroriUpdate);
             }
 
         ?>
@@ -133,19 +140,20 @@
 
                 </div>
             </div>
-
-
+        </form>
 
         <script>
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text:'<?php for($i=0; $i < count($arrayErrori); $i++) echo $arrayErrori[$i]?>' 
+                text:'<?php for($i=0; $i < count($arrayErroriUpdate, COUNT_NORMAL); $i++){ echo $arrayErroriUpdate[$i]; }?>' 
             })
         </script>
-        </form>
-
-
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
     </body>
 </html>

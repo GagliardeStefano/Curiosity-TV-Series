@@ -34,9 +34,12 @@
 
             $query = ("SELECT mail FROM utente WHERE mail = '$email'");
             $ris = mysqli_query($mysqli, $query);
-     
-            return $ris -> num_rows > 0;
-           
+            
+            if($ris -> num_rows > 0){
+                return true;
+            }else{
+                return false;
+            }
         }
 
         public function exist($email, $password){
@@ -55,7 +58,11 @@
             $query = ("SELECT mail, passwd FROM utente WHERE mail='$email' AND passwd = '$password'");
             $ris = mysqli_query($mysqli, $query);
 
-            return $ris -> num_rows > 0;
+            if($ris -> num_rows > 0){
+                return true;
+            }else{
+                return false;
+            }
         
         }
 
