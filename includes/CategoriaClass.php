@@ -2,8 +2,9 @@
 
     Class Categoria{
 
-        private $nome;
         private $id;
+        private $nome;
+        
 
         public function __construct($id, $nome)
         {

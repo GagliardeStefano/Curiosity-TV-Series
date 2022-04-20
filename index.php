@@ -1,3 +1,20 @@
+<?php
+
+  require './includes/SerieDAO.php';
+  require './includes/SerieClass.php';
+  require './includes/CategoriaDAO.php';
+  require './includes/CategoriaClass.php';
+
+  $serie = new SerieDAO; 
+  $categoria = new CategoriaDAO;
+  $risultato = $serie -> getSerie(); 
+       
+  $num = $categoria -> getAllNum();
+  $AllCateg = $categoria -> getAllCateg();
+      
+?>
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -52,6 +69,7 @@
         </nav>
       </header>
 
+      
       <!--Sezione Banner Categorie-->
       <section>
         <div id="sezioneCategoria" class="categorie hidden-no">
@@ -59,85 +77,26 @@
             <h2>Categorie</h2>
             <button onclick="functionCategorieNo(), functionSfocaturaNo()" type="button" class="btn-close" aria-label="Close"></button>
           </div>
-
+            
           <div class="row row-cols-12 ms-5 mb-5 mt-5">
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-          </div>
+            <?php for($i=0; $i < $num; $i++){ ?>
 
-          
-          <div class="row row-cols-12 ms-5 mb-5">
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
+              <div class="col-3 mb-2">
+                <a href="categoria.php?id=<?php echo $AllCateg[$i] -> getCategID() ?>">
+                  <h5><?php echo $AllCateg[$i] -> getCategNome() ?> </h5>
+                </a>
+              </div>
+            <?php } ?>
           </div>
-
-          
-          <div class="row row-cols-12 ms-5 mb-5">
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-            <div class="col-3">
-              <a href="#">
-                <h5>Avventura</h5>
-              </a>
-            </div>
-          </div>  
-          
         </div>
-
       </section>
 
       <section>
         <div id="sezioneSfocatura" class="sfocatura hidden-no"></div>
       </section>
+
+
+
 
 
      <!--Sezione Carousel-->
@@ -198,20 +157,7 @@
         </div>
       </section>
 
-      <?php
-
-        require './includes/SerieDAO.php';
-        require './includes/SerieClass.php';
-        require './includes/CategoriaDAO.php';
-        require './includes/CategoriaClass.php';
-
-        $serie = new SerieDAO; 
-        $categoria = new CategoriaDAO;
-        $risultato = $serie -> getSerie(); 
-       
       
-      ?>
-
       <!-- Sezione Serie TV -->
       <div id="top"></div>
       <br>

@@ -3,16 +3,7 @@
 
         public function insertUtente($nome, $cognome, $email, $password){
             
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
 
             $query = ("INSERT INTO utente VALUES('$email', '$password', '$nome', '$cognome')");
             mysqli_query($mysqli, $query);
@@ -21,16 +12,7 @@
         
         public function existMail($email){
 
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
 
             $query = ("SELECT mail FROM utente WHERE mail = '$email'");
             $ris = mysqli_query($mysqli, $query);
@@ -44,16 +26,7 @@
 
         public function exist($email, $password){
 
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
             
             $query = ("SELECT mail, passwd FROM utente WHERE mail='$email' AND passwd = '$password'");
             $ris = mysqli_query($mysqli, $query);
@@ -67,16 +40,7 @@
         }
 
         public function getUtente($email){
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
             
             $query =("SELECT * FROM utente WHERE mail='$email'");
             $ris = mysqli_query($mysqli, $query);
@@ -90,16 +54,7 @@
 
         public function ChangePass($email, $newPasswd){
 
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
 
             $query = ("UPDATE utente SET passwd = '$newPasswd' WHERE mail = '$email'");
             mysqli_query($mysqli, $query);

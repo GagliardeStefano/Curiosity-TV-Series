@@ -7,10 +7,10 @@
 
     $serie = new SerieDAO();
     $categoria = new CategoriaDAO;
-        
+    $AllCateg = $categoria -> getAllCateg();
         
     try{
-        $getID = $_GET["id"];
+        $getID = $_GET['id'];
         $ris = $serie -> getSerieID($getID);
     }catch(Exception $e){
         header("location: index.php");

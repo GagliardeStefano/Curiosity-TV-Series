@@ -4,16 +4,7 @@
 
         public function getSerie(){
 
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
 
             $query = ("SELECT * FROM serie");
             $res = mysqli_query($mysqli, $query);
@@ -30,16 +21,7 @@
 
         public function getNumSerie(){
 
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
-
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
+            require './partials/ConnectDB.php';
 
             $selectNum = ("SELECT * FROM serie");
             $res = mysqli_query($mysqli, $selectNum);
@@ -48,18 +30,9 @@
         }
 
         public function getSerieID($id){
-            $url = "localhost";
-            $user = "root";
-            $pass = "gagliarde";
-            $db = "ctvs";
+            require './partials/ConnectDB.php';
 
-            $mysqli = new mysqli($url, $user, $pass, $db);
-
-            if($mysqli -> connect_errno){
-                echo ("Errore: ".$mysqli -> connect_error);
-            }
-
-            $query = ("SELECT * FROM serie WHERE idSerie=$id");
+            $query = ("SELECT * FROM serie WHERE idSerie='$id'");
             $res = mysqli_query($mysqli, $query);
 
             if($res -> num_rows == 0){
