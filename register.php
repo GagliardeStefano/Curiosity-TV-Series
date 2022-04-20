@@ -10,7 +10,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
-    <body class="">
+    <body class="bg-dark">
 
     <?php 
 
@@ -32,45 +32,41 @@
 
             $arrayErroriReg = [];
 
-            if($nome != null){
-                //
-            }else{
+            if($nome == null){
                 $flagNome = "Inserisci un nome -- ";
                 array_push($arrayErroriReg, $flagNome);
             }
 
-            if($cognome != null){
-                //
-            }else{
+            if($cognome == null){
                 $flagCognome = "Inserisci un cognome -- ";
                 array_push($arrayErroriReg, $flagCognome);
             }
+             
 
-            if($mail != null){
-                //
-            }else{
+            if($mail == null){
                 $flagMail = "Inserisci un email -- ";
                 array_push($arrayErroriReg, $flagMail);
             }
 
-            if($paswd != null){
-                //
-            }else{
+            if($paswd == null){
                 $flagPwd = "Inserisci una password -- ";
                 array_push($arrayErroriReg, $flagPwd);
             }
 
+            if(strlen($paswd)<8){
+                $flagPassError = "La password deve contenere almeno 8 caratteri";
+                array_push($arrayErroriReg, $flagPassError);
+            }
 
             $exist = $utente -> existMail($mail);
             if($exist == true){
                 $flagExist = "Email già registrata -- ";
                 array_push($arrayErroriReg, $flagExist);
-            }else{
-                //
             }
 
             if($arrayErroriReg == null){
-                $utente -> insertUtente($nome, $cognome, $mail, $paswd);
+                $PassCript = md5($paswd);
+                $utente -> insertUtente($nome, $cognome, $mail, $PassCript);
                 header("location: index.php");
             }
         

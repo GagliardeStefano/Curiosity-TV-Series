@@ -12,7 +12,7 @@
         
     </head>
 
-    <body>
+    <body class="bg-dark">
         
         <?php
 
@@ -30,60 +30,51 @@
 
                 $arrayErroriUpdate = [];
 
-                if($mail != null){
-                    //
-                }else{
+                if($mail == null){
                     $flagMail = "Inserisci l`email -- ";
                     array_push($arrayErroriUpdate, $flagMail);
                 } 
 
-                if($checkMail != null){
-                    //
-                }else{
+                if($checkMail == null){
                     $flagCheckMail = "Inserisci l`email di conferma -- ";
                     array_push($arrayErroriUpdate, $checkMail);
                 }
 
-                if($newPwd != null){
-                    //
-                }else{
+                if($newPwd == null){
                     $flagPass = "Inserisci la nuova Password -- ";
                     array_push($arrayErroriUpdate, $flagPass);
                 }
 
-                if($checkNewPwd != null){
-                    //
-                }else{
+                if($checkNewPwd == null){
                     $flagCheckPass = "Inserisci la password di conferma -- ";
                     array_push($arrayErroriUpdate, $flagCheckPass);
                 }
 
+                if(strlen($newPwd)<8){
+                    $flagCountPassword = "La password deve avere almeno 8 caratteri";
+                    array_push($arrayErroriUpdate, $flagCountPassword);
+                }
+
                 $exist = $utente -> existMail($mail);
-                if($exist == true){
-                    //
-                }else{
+                if($exist == false){
                     $flagExist = "L`email non e` registrata -- ";
                     array_push($arrayErroriUpdate, $flagExist);
                 }
 
-                if($mail == $checkMail || $checkMail == $mail){
-                    //
-                }else{
+                if($mail != $checkMail || $checkMail != $mail){
                     $flagEqualsMail = "L`email e l`email di conferma non combaciano -- ";
                     array_push($arrayErroriUpdate, $flagEqualsMail);
                 }
 
-                if($newPwd == $checkNewPwd || $checkNewPwd == $newPwd){
-                    //
-                }else{
+                if($newPwd != $checkNewPwd || $checkNewPwd != $newPwd){
                     $flagEqualsPass = "La Password e la Password di conferma non combaciano -- ";
                     array_push($arrayErroriUpdate, $flagEqualsPass);
                 }
 
                 if($arrayErroriUpdate == null){
-                    
-                    $utente -> ChangePass($mail, $newPwd);
-                    header("location: index.php");
+                    $passCript = md5($newPwd);
+                    $utente -> ChangePass($mail, $passCript);
+                    header("location: login.php");
                 }
                 
                 print_r($arrayErroriUpdate);
@@ -91,6 +82,11 @@
 
         ?>
 
+        <div class="d-grid mt-5 text-center">
+            <a href="index.php">
+                <button class="btn btn-primary" type="button">Torna alla Home</button>
+            </a>
+        </div>
 
 
         <form action="update.php" method="post">

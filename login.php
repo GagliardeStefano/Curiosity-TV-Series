@@ -10,7 +10,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
-    <body class="">
+    <body class="bg-dark">
 
         <?php
             
@@ -29,32 +29,25 @@
 
                 $arrayErroriLogin = [];
 
-                if($mail != null){
-                    //
-                }else{
+                if($mail == null){
                     $flagMail = "Inserisci un email -- ";
                     array_push($arrayErroriLogin, $flagMail);
                 }
 
-                if($paswd != null){
-                    //
-                }else{
+                if($paswd == null){
                     $flagPass = "Inserisci una password -- ";
                     array_push($arrayErroriLogin, $flagPass);
                 }
 
                 $exist = $utente -> existMail($mail);
-                if($exist == true){
-                    //
-                }else{
+                if($exist == false){   
                     $flagExistMail = "Email non registrata -- ";
                     array_push($arrayErroriLogin, $flagExistMail);
                 }
 
-                $existDati = $utente -> exist($mail, $paswd);
-                if($existDati == true){
-                    //
-                }else{
+                $PassCript = md5($paswd);
+                $existDati = $utente -> exist($mail, $PassCript);
+                if($existDati == false){   
                     $flagDatiUtente = "Email e Password errati -- ";
                     array_push($arrayErroriLogin, $flagDatiUtente);
                 }
