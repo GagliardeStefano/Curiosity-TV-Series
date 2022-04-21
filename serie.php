@@ -18,6 +18,7 @@
     
     $risCateg = $categoria -> getCateg($getID);
     $risNumCateg = $categoria -> getNumCateg($getID);
+
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +100,7 @@
     </section>
 
 
-    <!--Sezione carousel-->
+    <!--Sezione Informazioni-->
     <section>
         <div class="container ">
             <div class="row row-cols-auto">
@@ -124,9 +125,9 @@
                                     <h3>Categorie</h3>
                                     <div class="categ-serie">
                                         <?php for($i=0; $i < $risNumCateg; $i++){    ?>
-                                                
-                                            <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
-                                                
+                                            <a class="link-categ" href="categoria.php?id=<?php echo $risCateg[$i] -> getCategID() ?>">    
+                                                <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
+                                            </a>
                                         <?php } ?>  
                                     </div>    
                                 </div>

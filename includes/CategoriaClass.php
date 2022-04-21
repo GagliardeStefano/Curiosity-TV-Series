@@ -23,23 +23,25 @@
 
     Class SerieCateg{
         
-        private $ID;
+        private $id;
         private $nome;
         private $locandina;
         private $annoInizio;
         private $annoFine;
+        private $voto;
         
-        public function __construct($id, $nome, $locandina, $annoInizio, $annoFine)
+        public function __construct($id, $nome, $locandina, $annoInizio, $annoFine, $voto)
         {
             $this -> id = $id;
             $this -> nome = $nome;
             $this -> locandina = $locandina;
             $this -> annoInizio = $annoInizio;
             $this -> annoFine = $annoFine;
+            $this->voto = $voto;
         }
 
         function getSerieID(){
-            return $this->ID;
+            return $this->id;
         }
         
         function getSerieNome(){
@@ -56,6 +58,10 @@
         
         function getSerieAnnoFine(){
             return $this->annoFine;
+        }
+
+        function getSerieVoto(){
+            return $this->voto;
         }
     }
 

@@ -41,7 +41,7 @@
             $arraySerieCateg = [];
 
             for($i=0; $i < $row = mysqli_fetch_array($ris); $i++){
-                $objCateg = new SerieCateg($row['idSerie'], $row['nome'], $row['locandina'], $row['anno_inizio'], $row['anno_fine']);
+                $objCateg = new SerieCateg($row['idSerie'], $row['nome'], $row['locandina'], $row['anno_inizio'], $row['anno_fine'], $row['voto']);
                 array_push($arraySerieCateg, $objCateg);
             }
             return $arraySerieCateg;

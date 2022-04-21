@@ -81,6 +81,12 @@ footer ion-icon{
     height: 2rem;
 }
 
+.star-categ{
+    color: yellow !important;
+    width: 1rem;
+    height: 1rem;
+}
+
 
 .rating {
     display: flex;
@@ -182,7 +188,7 @@ footer ion-icon{
 }
 
 .categ-serie{
-    display: -webkit-inline-box;
+    display: flex;
     margin-top: 2rem;
     text-align: center;
 }
@@ -194,3 +200,11 @@ footer ion-icon{
     border-radius: 22px;
 }
 
+.link-categ{
+    color: white;
+    text-decoration: none;
+}
+
+.link-categ:hover{
+    color: grey !important;
+}
