@@ -83,7 +83,7 @@
                 <div class="col-4">
                     <div class="col">
                         <h1 class="testo">  <?php echo $ris -> getNome() ?></h1>
-                        <p class="testo"> <?php echo $ris -> getAnnoI()."-".$ris -> getAnnoF() ?>  </p>
+                        <p class="testo"> <?php echo $ris -> getAnnoI()." - ".$ris -> getAnnoF() ?>  </p>
                     </div>
 
                     <div class="col-2" style="display: -webkit-box;">
