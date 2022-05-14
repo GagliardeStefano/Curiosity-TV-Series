@@ -6,14 +6,14 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie");
+            $query = ("SELECT * FROM serie LIMIT 5");
             $res = mysqli_query($mysqli, $query);
 
             $arraySerie=[];
 
             for($i=0; $i<$row = mysqli_fetch_array($res); $i++){
                 
-                $oSerie = new Serie($row['idSerie'], $row['nome'], $row['trama'], $row['locandina'], $row['voto'], $row['anno_inizio'], $row['anno_fine'], $row['img_orizzontale']);
+                $oSerie = new Serie($row['idSerie'], $row['nome'], $row['trama'], $row['locandina'], $row['voto'], $row['anno_inizio'], $row['img_orizzontale']);
                 array_push($arraySerie, $oSerie);
             }
             return $arraySerie;
@@ -42,7 +42,7 @@
             }else{
                 
                 while($row = mysqli_fetch_array($res)){
-                    $SerieConID = new Serie($row['idSerie'],$row['nome'], $row['trama'], $row['locandina'], $row['voto'], $row['anno_inizio'], $row['anno_fine'], $row['img_orizzontale']);
+                    $SerieConID = new Serie($row['idSerie'],$row['nome'], $row['trama'], $row['locandina'], $row['voto'], $row['anno_inizio'],$row['img_orizzontale']);
                     return $SerieConID;
                 }
             }

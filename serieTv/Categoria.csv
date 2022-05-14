@@ -1,15 +1,15 @@
 Nome,IdCategoria
-Serie crime,1
-Serie fantasy,2
-Serie tratte da fumetti,3
-Drammi,4
-Serie americane,5
+Serie  crime,1
+Serie  fantasy,2
+Serie  tratte da fumetti,3
+Drammi ,4
+Serie  americane,5
 Sitcom,6
-Commedie,7
+Commedie ,7
 Norvegese,8
 Gialli e misteri ,9
-Serie per adolescenti,10
-Programmi scandinavi,11
+Serie  per adolescenti,10
+Programmi  scandinavi,11
 Azione e avventura ,12
 Fantascienza  ,13
 Thriller ,14
@@ -17,132 +17,147 @@ Britannico,15
 Serie e film storici,16
 Horror ,17
 Canadese,18
-Serie politiche,19
+Serie  politiche,19
 Spagnolo,20
 Giapponese,21
-Serie tratte da manga,22
+Serie  tratte da manga,22
 Anime shonen,23
 Anime d'azione,24
 Anime di fantascienza e fantasy,25
 Serie anime,26
-Serie con ambientazione medica,27
-Serie tratte da libri,28
-Drammi a sfondo sociale,29
+Serie  con ambientazione medica,27
+Serie  tratte da libri,28
+Drammi  a sfondo sociale,29
 Anime horror,30
 Anime tratti da videogiochi,31
-Serie giudiziaria,32
+Serie  giudiziaria,32
 Tedesco,33
 Israeliano,34
 Francese,35
-Commedie romantiche,36
+Commedie  romantiche,36
 Film tratti da libri,37
 Film crime,38
 Thriller,39
 Crime thriller,40
 Horror,41
 Musica e musical,42
-Per bambini,43
+ per bambini,43
 Cartoni ,44
-Da guardare insieme alla famiglia,45
+ da guardare insieme alla famiglia,45
 Belga,46
 Polacco,47
 Messicano,48
-Anime drammatici,49
-Coreano,50
-Italiano,51
-Reality competitivi,52
-Reality,53
-Drammi,54
-Film romantici,55
-Film indipendenti,56
-Drammi coreani tratti da webtoon,57
-Anime tratti da light novel,58
-Musica per bambini,59
-Film d'azione,60
-Australiano,61
-Svedese,62
-Programmi in lingua hindi,63
-Indiano,64
-Anime gialli e thriller,65
-Danese,66
-Docuserie,67
-Turco,68
-Finlandese,69
-Russo,70
-Brasiliano,71
-Anime ambientati a scuola,72
-Film di fantascienza,73
-Austriaco,74
-Doc. socioculturali,75
-Documentari true crime,76
-Lussemburghese,77
-Programmi cinesi,78
-Anime seinen,79
-Egiziano,80
-Serie mediorientali,81
-Anime tratti da libri,82
-Stili di vita,83
-Hip hop,84
-Programmi su cibo e viaggi,85
-Argentino,86
-Crime action,87
-Istruzione per bambini,88
-Film anime,89
-Thailandese,90
-Drammi a sfondo sociale,91
-Sudafricano,92
-Colombiano,93
-Anime su storie d'amore,94
-Libanese,95
-Documentari militari,96
-Documentari storici,97
-Reality su casa e giardino,98
-Nuova Zelanda,99
-Documentari su viaggi e avventura,100
-Doc. su scienza e natura,101
-Scienza e natura,102
-Talk show,103
-Di varietà,104
-Olandese,105
-Film giudiziari,106
-Film basati su storie vere,107
-Drammi premiati,108
-Irlandese,109
-Documentari politici,110
-Film LGBTQ,111
-Commedie,112
-Malese,113
-Commedie romantiche,114
-Film per famiglie,115
-Film per bambini e famiglie,116
-Taiwanese,117
-Giordano,118
-Temi particolari,119
-Portoghese,120
-Standup,122
-Film per adolescenti,123
-Social & Cultural Docs,124
-Docuseries,125
-Science & Nature Docs,126
-Science & Nature ,127
-US Shows,128
-Korean,129
-Thrillers,130
-Dramas,131
-Reality su matrimonio e amore,132
-StandUp Comedy,133
-Comedies,134
-Thai,135
-Teen  Shows,136
-Spanish,137
-Dramas,138
-Awardwinning Dramas,139
-Independent Movies,140
-Documentari biografici,141
-Kids' ,142
-Cartoons,143
-Shows Based on Comics,144
-German,145
-Social Issue  Dramas,146
-Film documentari,147
-Satira,148
+Docuserie,49
+Documentari true crime,50
+Anime drammatici,51
+Coreano,52
+Italiano,53
+Reality competitivi,54
+Reality,55
+Drammi,56
+Film romantici,57
+Film indipendenti,58
+Drammi coreani tratti da webtoon,59
+Anime tratti da light novel,60
+Musica per bambini,61
+Film d'azione,62
+Australiano,63
+Svedese,64
+Programmi  in lingua hindi,65
+Indiano,66
+Anime gialli e thriller,67
+Danese,68
+Turco,69
+Finlandese,70
+Russo,71
+Brasiliano,72
+Anime ambientati a scuola,73
+Film di fantascienza,74
+Austriaco,75
+Mexican,76
+Crime  Shows,77
+ Dramas,78
+ Action & Adventure,79
+Social & Cultural Docs,80
+Docuseries,81
+True Crime Documentaries,82
+US  Shows,83
+Period Pieces,84
+Lussemburghese,85
+Romantic  Comedies,86
+ Shows Based on Books,87
+Teen  Shows,88
+ Comedies,89
+Programmi  cinesi,90
+Anime seinen,91
+Egiziano,92
+Serie  mediorientali,93
+British,94
+Sitcoms,95
+Japanese,96
+Anime based on Light Novels,97
+Anime based on Books,98
+Action Anime,99
+SciFi & Fantasy Anime,100
+Anime Series,101
+Stili di vita,102
+HipHop,103
+Music & Musicals,104
+Programmi  su cibo e viaggi,105
+Argentino,106
+Hip hop,107
+Political  Shows,108
+Canadian,109
+ Mysteries,110
+SciFi ,111
+ Thrillers,112
+Istruzione per bambini,113
+Thailandese,114
+Chinese  Shows,115
+HindiLanguage  Shows,116
+Indian,117
+Doc. socioculturali,118
+Drammi a sfondo sociale,119
+Sudafricano,120
+Colombiano,121
+Anime su storie d'amore,122
+Film anime,123
+Libanese,124
+Korean,125
+Documentari militari,126
+Documentari storici,127
+ Shows Based on Manga,128
+Seinen Anime,129
+Reality su casa e giardino,130
+Nuova Zelanda,131
+Documentari su viaggi e avventura,132
+Spanish,133
+Doc. su scienza e natura,134
+ scienza e natura,135
+Talk show,136
+ di varietà,137
+Kids' ,138
+ Cartoons,139
+Family Watch Together ,140
+ Horror,141
+Olandese,142
+Film giudiziari,143
+Film basati su storie vere,144
+Drammi premiati,145
+Italian,146
+Irlandese,147
+German,148
+Documentari politici,149
+French,150
+Film LGBTQ,151
+Commedie,152
+Malese,153
+Commedie romantiche,154
+Film per famiglie,155
+Film per bambini e famiglie,156
+Taiwanese,157
+Reality su matrimonio e amore,158
+Anime tratti da libri,159
+Giordano,160
+Temi particolari,161
+Portoghese,162

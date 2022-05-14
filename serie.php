@@ -57,9 +57,6 @@
                     <a class="nav-link" href="#stagioni">Stagioni</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#recensioni">Recensioni</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#footer">About us</a>
                 </li>
                 <li class="nav-item">
@@ -83,7 +80,7 @@
                 <div class="col-4">
                     <div class="col">
                         <h1 class="testo">  <?php echo $ris -> getNome() ?></h1>
-                        <p class="testo"> <?php echo $ris -> getAnnoI()." - ".$ris -> getAnnoF() ?>  </p>
+                        <p class="testo"> <?php echo $ris -> getAnnoI()?>  </p>
                     </div>
 
                     <div class="col-2" style="display: -webkit-box;">
@@ -244,55 +241,6 @@
         </div>
     </section>
     
-
-
-      
-    <!--Sezione Recensioni-->
-    <div id="recensioni"></div>
-    <br>
-    <section>
-        <div class="container mt-5">
-            <h2 class="testo">Recensioni</h2>
-            <div class="row">
-
-                <div class="col-6">
-                    <h4 class="testo">Aggiungi una recensione</h4>
-
-                    <div class="feedback">
-                        <div class="rating">
-                          <input type="radio" name="rating" id="rating-5">
-                          <label for="rating-5"></label>
-                          <input type="radio" name="rating" id="rating-4">
-                          <label for="rating-4"></label>
-                          <input type="radio" name="rating" id="rating-3">
-                          <label for="rating-3"></label>
-                          <input type="radio" name="rating" id="rating-2">
-                          <label for="rating-2"></label>
-                          <input type="radio" name="rating" id="rating-1">
-                          <label for="rating-1"></label>
-                        </div>
-                    </div>  
-                
-                    <form action="">
-                        <div class="form-floating mt-2">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                            <label for="floatingTextarea2">Recensione</label>
-                        </div>
-
-                        <div class="mt-1">
-                            <input class="btn btn-primary" type="submit" value="Invia">
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-
-
 
     <!--Sezione Footer-->
     <div id="footer"></div>

@@ -2,23 +2,25 @@
 
     Class Categoria{
 
-        private $id;
         private $nome;
+        private $id;
+        
         
 
-        public function __construct($id, $nome)
+        public function __construct($nome, $id)
         {
-            $this -> id = $id;
             $this -> nome = $nome;
+            $this -> id = $id;
+        }
+
+        function getCategNome(){
+            return $this->nome;
         }
 
         function getCategID(){
             return $this->id;
         }
 
-        function getCategNome(){
-            return $this->nome;
-        }
     }
 
     Class SerieCateg{
@@ -27,16 +29,14 @@
         private $nome;
         private $locandina;
         private $annoInizio;
-        private $annoFine;
         private $voto;
         
-        public function __construct($id, $nome, $locandina, $annoInizio, $annoFine, $voto)
+        public function __construct($id, $nome, $locandina, $annoInizio, $voto)
         {
             $this -> id = $id;
             $this -> nome = $nome;
             $this -> locandina = $locandina;
             $this -> annoInizio = $annoInizio;
-            $this -> annoFine = $annoFine;
             $this->voto = $voto;
         }
 
@@ -56,10 +56,6 @@
             return $this->annoInizio;
         }
         
-        function getSerieAnnoFine(){
-            return $this->annoFine;
-        }
-
         function getSerieVoto(){
             return $this->voto;
         }

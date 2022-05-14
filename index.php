@@ -5,8 +5,8 @@
   require './includes/CategoriaDAO.php';
   require './includes/CategoriaClass.php';
 
-  $serie = new SerieDAO; 
-  $categoria = new CategoriaDAO;
+  $serie = new SerieDAO(); 
+  $categoria = new CategoriaDAO();
   $risultato = $serie -> getSerie(); 
        
   $num = $categoria -> getAllNum();
@@ -51,7 +51,7 @@
                   <a class="nav-link" href="#top">Top</a>
                 </li>
                 <li class="nav-item">
-                  <a id="categorie" class="nav-link" onclick="functionCategorie(), functionSfocatura()">Categorie</a>
+                  <a onclick="functionCategorie()" class="nav-link">Categorie</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#footer">About us</a>
@@ -75,7 +75,7 @@
         <div id="sezioneCategoria" class="categorie hidden-no">
           <div class="ms-5">
             <h2>Categorie</h2>
-            <button onclick="functionCategorieNo(), functionSfocaturaNo()" type="button" class="btn-close" aria-label="Close"></button>
+            <button onclick="functionCategorieNo()" type="button" class="btn-close" aria-label="Close"></button>
           </div>
             
           <div class="row row-cols-12 ms-5 mb-5 mt-5">
@@ -91,13 +91,6 @@
         </div>
       </section>
 
-      <section>
-        <div id="sezioneSfocatura" class="sfocatura hidden-no"></div>
-      </section>
-
-
-
-
 
      <!--Sezione Carousel-->
       <section>
@@ -112,8 +105,7 @@
                 <div class="carousel-inner ">
                   <div class="carousel-item active">
 
-                 
-                    <img src="./serieTv/ST/StOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/StrangerThings/StrangerThingsOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h1 class="testo fst-italic">Stranger Things</h1>
                       <h2 class="testo fst-italic">2017 - in corso...</h2>
@@ -122,9 +114,8 @@
 
                   </div>
                   <div class="carousel-item">
-
                     
-                    <img src="./serieTv/witcher/witcherOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
+                    <img src="./serieTv/TheWitcher/TheWitcherOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h1 class="testo">The Witcher</h1>
                       <h2 class="testo fst-italic">2020 - in corso...</h2>
@@ -133,7 +124,6 @@
 
                   </div>
                   <div class="carousel-item">
-
                     
                     <img src="./serieTv/Vikings/VikingsOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
                     <div class="carousel-caption d-none d-md-block">
@@ -172,8 +162,8 @@
                   <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
                 </a>
                 <div class="card-body">
-                  <h4 class="testo"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
-                  <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI()." - ".$risultato[$i]->getAnnoF() )  ?></p>
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI())  ?></p>
 
                   <?php  
                     $ID = $risultato[$i] -> getID();
@@ -181,7 +171,23 @@
 
                   ?>                       
                           
-                  <p class="testo"> <?php echo ($risCateg[1] -> getCategNome()." / ".$risCateg[2] -> getCategNome()) ?> </p> 
+                  <p class="testo" style="width: 10rem;">
+                    <?php 
+                      if($risCateg == null){
+
+                        echo ("");
+
+                      }else if(count($risCateg) < 2){ 
+
+                        echo($risCateg[0] -> getCategNome());
+
+                      }else{
+                      
+                        echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
+
+                      }
+                    ?>
+                  </p> 
                 </div>
               </div>
             <?php } ?> 
@@ -191,41 +197,41 @@
 
       
       <!--Sezione Footer-->
-      <div id="footer"></div>
+    <div id="footer"></div>
       <br>
-      <section>
-        <footer>
-          <div class="container">
-            <div class="row row-cols-auto">
+        <section>
+            <footer>
+                <div class="container">
+                    <div class="row row-cols-auto">
 
-              <div class="col-6">
-                <a href="#">
-                  <img class="logo mt-5" src="./img/logo.png" alt="">
-                </a>
-                <h3 class="testo">Curiosity TV Series</h3>
-              </div>
+                    <div class="col-6">
+                        <a href="#">
+                        <img class="logo mt-5" src="./img/logo.png" alt="">
+                        </a>
+                        <h3 class="testo">Curiosity TV Series</h3>
+                    </div>
 
-              <div class="col-6">
-                <h4 class="mt-5">I miei contatti</h4>
+                    <div class="col-6">
+                        <h4 class="mt-5">I miei contatti</h4>
 
-                <a href="https://www.linkedin.com/in/stefano-gagliarde-005aa4222/" class="link-footer" target="_blanck">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a> 
+                        <a href="https://www.linkedin.com/in/stefano-gagliarde-005aa4222/" class="link-footer" target="_blanck">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        </a> 
 
-                <a href="https://github.com/GagliardeStefano" class="link-footer" target="_blanck">
-                  <ion-icon name="logo-github"></ion-icon>
-                </a>
+                        <a href="https://github.com/GagliardeStefano" class="link-footer" target="_blanck">
+                        <ion-icon name="logo-github"></ion-icon>
+                        </a>
 
-                <a href="mailto:stefanogagliarde32@gmail.com" class="link-footer" target="_blanck">
-                  <ion-icon name="at-outline"></ion-icon>
-                </a>
-              </div>
+                        <a href="mailto:stefanogagliarde32@gmail.com" class="link-footer" target="_blanck">
+                        <ion-icon name="at-outline"></ion-icon>
+                        </a>
+                    </div>
 
-              
-            </div>
-          </div>
-        </footer>
-      </section>
+                    </div>
+                </div>
+            </footer>
+        </section> 
+
 
 
       

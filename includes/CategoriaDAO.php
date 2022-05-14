@@ -7,13 +7,13 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.idCateg1 = categoria.idCateg WHERE idSerie1=$id");
+            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id");
             $res = mysqli_query($mysqli, $query);
 
             $arrayCateg = [];
 
             for($i=0; $i < $row = mysqli_fetch_array($res); $i++){
-                $objCateg = new Categoria($row['idCateg1'], $row['nome']);
+                $objCateg = new Categoria($row['nome'], $row['IdCategoria']);
                 array_push($arrayCateg, $objCateg);
             }
             return $arrayCateg;
@@ -24,7 +24,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.idCateg1 = categoria.idCateg WHERE idSerie1=$id");
+            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id");
             $res = mysqli_query($mysqli, $query);
 
             return $res -> num_rows;
@@ -35,13 +35,13 @@
             
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie_categoria JOIN serie on serie_categoria.idSerie1 = serie.idSerie WHERE idCateg1 = $idCategoria");
+            $query = ("SELECT * FROM serie_categoria JOIN serie on serie_categoria.IdSerie = serie.idSerie WHERE IdCategoria = $idCategoria");
             $ris = mysqli_query($mysqli, $query);
 
             $arraySerieCateg = [];
 
             for($i=0; $i < $row = mysqli_fetch_array($ris); $i++){
-                $objCateg = new SerieCateg($row['idSerie'], $row['nome'], $row['locandina'], $row['anno_inizio'], $row['anno_fine'], $row['voto']);
+                $objCateg = new SerieCateg($row['idSerie'], $row['nome'], $row['locandina'], $row['anno_inizio'], $row['voto']);
                 array_push($arraySerieCateg, $objCateg);
             }
             return $arraySerieCateg;
@@ -56,7 +56,7 @@
 
             $arrayAllC = [];
             for($i=0; $i < $row = mysqli_fetch_array($ris); $i++){
-                $objAllCategorie = new Categoria($row['idCateg'], $row['nome']);
+                $objAllCategorie = new Categoria($row['nome'], $row['idCateg']);
                 array_push($arrayAllC, $objAllCategorie);
             }
             return $arrayAllC;
@@ -80,7 +80,7 @@
             $ris = mysqli_query($mysqli, $query);
 
             for($i=0; $i < $row = mysqli_fetch_array($ris); $i++){
-                $objCategoria = new Categoria($row['idCateg'], $row['nome']);
+                $objCategoria = new Categoria($row['nome'], $row['idCateg']);
             }
             return $objCategoria;
         }

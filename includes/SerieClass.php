@@ -7,11 +7,10 @@ class Serie{
     private $locandina;
     private $voto;
     private $annoI;
-    private $annoF;
     private $img;
 
 
-    function __construct($id, $nome, $trama, $locandina, $voto, $annoI, $annoF, $img)
+    function __construct($id, $nome, $trama, $locandina, $voto, $annoI,$img)
     {
         $this->id = $id;
         $this->nome = $nome;
@@ -19,7 +18,6 @@ class Serie{
         $this->locandina = $locandina;
         $this->voto = $voto;
         $this->annoI = $annoI;
-        $this->annoF = $annoF;
         $this->img = $img;
 
     }
@@ -43,9 +41,6 @@ class Serie{
     }
     function getAnnoI(){
         return $this->annoI; 
-    }
-    function getAnnoF(){
-        return $this->annoF; 
     }
     function getimg(){
         return $this->img; 
