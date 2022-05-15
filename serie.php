@@ -138,6 +138,7 @@
         </div>
     </section>
 
+    <?php   ?>
 
     <!--Sezione Episodi-->
     <div id="stagioni"></div>

@@ -3,7 +3,8 @@
     Class CategoriaDAO {
 
         //Prende le categorie che fanno parte di una serie TV
-        public function getCateg($id){
+        public function getCateg($id)
+        {
 
             require './partials/ConnectDB.php';
 
@@ -20,7 +21,8 @@
         }
 
         //Prende il numero di categorie di una serie TV
-        public function getNumCateg($id){
+        public function getNumCateg($id)
+        {
 
             require './partials/ConnectDB.php';
 
@@ -31,7 +33,8 @@
         }
 
         //Prende tutte le serie TV che fanno parte di una categoria
-        public function getSerieCateg($idCategoria){
+        public function getSerieCateg($idCategoria)
+        {
             
             require './partials/ConnectDB.php';
 
@@ -48,7 +51,8 @@
         }
 
         //Prende tutte le categorie
-        public function getAllCateg(){
+        public function getAllCateg()
+        {
             require './partials/ConnectDB.php';
 
             $query = ("SELECT * FROM categoria");
@@ -63,7 +67,8 @@
         }   
 
         //Prende il numero di tutte le categorie
-        public function getAllNum(){
+        public function getAllNum()
+        {
             require './partials/ConnectDB.php';
 
             $query = ("SELECT * FROM categoria");
@@ -73,7 +78,8 @@
         }
 
         //Prendo la categoria in base all'ID
-        public function getCategID($id){
+        public function getCategID($id)
+        {
             require './partials/ConnectDB.php';
 
             $query = ("SELECT idCateg, nome FROM categoria WHERE idCateg=$id");
