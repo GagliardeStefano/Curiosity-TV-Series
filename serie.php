@@ -117,17 +117,21 @@
                                     <p> <?php echo $ris -> getTrama() ?> </p>
                                 </div>
 
-                                <div class="col testo mt-5">
-                                    
-                                    <h3>Categorie</h3>
-                                    <div class="categ-serie">
-                                        <?php for($i=0; $i < $risNumCateg; $i++){    ?>
-                                            <a class="link-categ" href="categoria.php?id=<?php echo $risCateg[$i] -> getCategID() ?>">    
-                                                <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
-                                            </a>
-                                        <?php } ?>  
-                                    </div>    
-                                </div>
+                                <?php   if($risCateg == null){ echo (""); }
+                                
+                                else{ ?>
+                                    <div class="col testo mt-5">
+                                        
+                                        <h3>Categorie</h3>
+                                        <div class="categ-serie">
+                                            <?php for($i=0; $i < $risNumCateg; $i++){    ?>
+                                                <a class="link-categ" href="categoria.php?id=<?php echo $risCateg[$i] -> getCategID() ?>">    
+                                                    <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
+                                                </a>
+                                            <?php } ?>  
+                                        </div>    
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -138,7 +142,15 @@
         </div>
     </section>
 
-    <?php   ?>
+    <?php 
+        require './includes/EpisodiClass.php';
+        require './includes/EpisodiDAO.php';
+
+        $stagione = new EpisodiDAO();
+        $NumStagione = $stagione -> GetNumStagioni($getID);
+        $DatiStagione = $stagione -> GetStagioni($getID);
+     
+    ?>
 
     <!--Sezione Episodi-->
     <div id="stagioni"></div>
@@ -148,96 +160,47 @@
             <h2 class="testo text-start">Stagioni e Episodi | <p class="testo"> <?php echo $ris -> getNome() ?>  </p> </h2>
             <div class="row row-cols-auto ms-1">
                 
-                <div class="form-check testo">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                      Stagione 1
-                    </label>
-                </div>
+                <h5 class="testo">Stagioni</h5>
+                <?php for($j=0; $j < $NumStagione; $j++){  ?>
+                
+                    <div class="form-check testo">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios">
+                            <?php echo ("Stagione ".$DatiStagione[$j] -> getNumStagione()); ?>
+                            <?php $IDStagione = $DatiStagione[$j] -> getIdStagione();  ?>
+                        </label>
+   
+                    </div>
 
-                <div class="form-check testo">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                    <label class="form-check-label" for="exampleRadios2">
-                      Stagione 2
-                    </label>
-                </div>
+                   
+                    <h6 class="testo mt-5"><?php echo $DatiStagione[$j] -> getAnnoStagione(); ?></h6> 
+                   
+                <?php } ?>
 
-                <div class="form-check testo">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                    <label class="form-check-label" for="exampleRadios3">
-                      Stagione 3
-                    </label>
-                </div>
             </div>
 
-            <h6 class="testo mt-5">Anno: 2017</h6>
-
+            <?php $DatiEpisodi = $stagione -> GetEpisodi($IDStagione);  ?>
+            
             <div class="row mt-5 row-cols-auto">
 
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body testo">
-                            <div style="display: -webkit-box;" >
-                                <h4>1. Segreti</h4>
-                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
-                            </div>
-                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
-                        </div>
-                    </div>
-                </div>
+                <?php for($y=0; $y < $stagione -> GetNumEpisodi($IDStagione); $y++){   ?>
 
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body testo">
-                            <div style="display: -webkit-box;" >
-                                <h4>1. Segreti</h4>
-                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
-                            </div>
-                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body testo">
-                            <div style="display: -webkit-box;" >
-                                <h4>1. Segreti</h4>
-                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<?php echo $DatiEpisodi[$y] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
+                            <div class="card-body testo">
+                                <div style="display: -webkit-box;" >
+                                    <h4><?php echo $DatiEpisodi[$y] -> getTitoloEpisodio(); ?></h4>
+                                    <p class="position-absolute top-50 end-0 translate-middle-y mt-3"><?php echo $DatiEpisodi[$y] -> getDurataEpisodio(); ?></p>
+                                </div>
+                                <p class="card-text"><?php echo $DatiEpisodi[$y] -> getDescriozioneEpisodio(); ?></p>
                             </div>
-                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body testo">
-                            <div style="display: -webkit-box;" >
-                                <h4>1. Segreti</h4>
-                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
-                            </div>
-                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
 
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body testo">
-                            <div style="display: -webkit-box;" >
-                                <h4>1. Segreti</h4>
-                                <p class="position-absolute top-50 end-0 translate-middle-y mt-3">52min</p>
-                            </div>
-                            <p class="card-text">Nel 2019 la scomparsa di un ragazzino del posto provoca il terrore tra i residenti di Winden, piccola cittadina tedesca con una storia bizzarra e tragica.</p>
-                        </div>
-                    </div>
-                </div> 
             </div>
         </div>
     </section>
