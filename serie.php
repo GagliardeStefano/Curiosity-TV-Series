@@ -35,7 +35,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
-<body class="bg-dark">
+<body class="">
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -150,57 +150,27 @@
         $NumStagione = $stagione -> GetNumStagioni($getID);
         $DatiStagione = $stagione -> GetStagioni($getID);
      
+        $num = 1;
     ?>
 
     <!--Sezione Episodi-->
-    <div id="stagioni"></div>
-    <br>
     <section>
-        <div class="container mt-5">
-            <h2 class="testo text-start">Stagioni e Episodi | <p class="testo"> <?php echo $ris -> getNome() ?>  </p> </h2>
-            <div class="row row-cols-auto ms-1">
+        <div class="container">
+            <div class="row row-cols-auto">
+                <select name="scelta" class="form-select" aria-label="Default select example">
+                    <option selected>Seleziona la Stagione</option>
+
+                    <?php for($j=0; $j<$NumStagione; $j++){ ?>
+
+                        <option value="<?php echo $num++ ?>">
+                            <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
+                        </option>
+
+                    <?php }  ?>
+
+                </select>
+
                 
-                <h5 class="testo">Stagioni</h5>
-                <?php for($j=0; $j < $NumStagione; $j++){  ?>
-                
-                    <div class="form-check testo">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios" value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios">
-                            <?php echo ("Stagione ".$DatiStagione[$j] -> getNumStagione()); ?>
-                            <?php $IDStagione = $DatiStagione[$j] -> getIdStagione();  ?>
-                        </label>
-   
-                    </div>
-
-                   
-                    <h6 class="testo mt-5"><?php echo $DatiStagione[$j] -> getAnnoStagione(); ?></h6> 
-                   
-                <?php } ?>
-
-            </div>
-
-            <?php $DatiEpisodi = $stagione -> GetEpisodi($IDStagione);  ?>
-            
-            <div class="row mt-5 row-cols-auto">
-
-                <?php for($y=0; $y < $stagione -> GetNumEpisodi($IDStagione); $y++){   ?>
-
-
-                    <div class="col">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<?php echo $DatiEpisodi[$y] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
-                            <div class="card-body testo">
-                                <div style="display: -webkit-box;" >
-                                    <h4><?php echo $DatiEpisodi[$y] -> getTitoloEpisodio(); ?></h4>
-                                    <p class="position-absolute top-50 end-0 translate-middle-y mt-3"><?php echo $DatiEpisodi[$y] -> getDurataEpisodio(); ?></p>
-                                </div>
-                                <p class="card-text"><?php echo $DatiEpisodi[$y] -> getDescriozioneEpisodio(); ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php } ?>
-
             </div>
         </div>
     </section>
