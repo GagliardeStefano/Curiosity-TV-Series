@@ -54,7 +54,7 @@
             }
 
             if(strlen($paswd)<8){
-                $flagPassError = "La password deve contenere almeno 8 caratteri";
+                $flagPassError = "La password deve contenere almeno 8 caratteri -- ";
                 array_push($arrayErroriReg, $flagPassError);
             }
 
@@ -127,13 +127,18 @@
             </div>
         </form>
 
-       <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text:'<?php for($i=0; $i < count($arrayErroriReg, COUNT_NORMAL); $i++){ echo $arrayErroriReg[$i]; }?>' 
-            })
-        </script>
+        <?php if(isset($arrayErroriReg)){   ?>
+
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text:'<?php for($i=0; $i < count($arrayErroriReg, COUNT_NORMAL); $i++){ echo $arrayErroriReg[$i]; }?>' 
+                })
+            </script>
+
+       <?php } ?>
+       
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
