@@ -120,7 +120,7 @@
                                 <?php   if($risCateg == null){ echo (""); }
                                 
                                 else{ ?>
-                                    <div class="col testo mt-5">
+                                    <div class="col testo mt-5 row-cols-auto">
                                         
                                         <h3>Categorie</h3>
                                         <div class="categ-serie">
@@ -151,23 +151,47 @@
         $DatiStagione = $stagione -> GetStagioni($getID);
      
         $num = 1;
+        
+        $idStagione = [];
     ?>
 
     <!--Sezione Episodi-->
     <section>
         <div class="container">
             <div class="row row-cols-auto">
-                <select name="scelta" class="form-select" aria-label="Default select example">
+                <select name="scelta" class="form-select" aria-label="Default select example" onchange="episodi()" id="selezione">
                     <option selected>Seleziona la Stagione</option>
 
                     <?php for($j=0; $j<$NumStagione; $j++){ ?>
-
-                        <option value="<?php echo $num++ ?>">
+                        
+                    
+                        <option value="<?php echo $num++?>">
                             <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
+
+                            <?php array_push($idStagione, $DatiStagione[$j] -> getIdStagione()); ?>
+
+                            <p class="testo"><?php echo "------ ID: ".$idStagione[$j] ?></p>
+
                         </option>
 
                     <?php }  ?>
+
+                    
                 </select>
+                
+                <?php for($y=0; $y<count($DatiEpisodi); $y++){ ?>
+
+                    <div class="mt-5 container row-cols-auto">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<?php echo $DatiEpisodi[$y] -> getImgEpisodio() ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="testo card-title"><?php echo $DatiEpisodi[$y] -> getTitoloEpisodio() ?></h5>
+                                <p class="testo card-text"><?php echo $DatiEpisodi[$y] -> getDescriozioneEpisodio() ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -216,5 +240,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

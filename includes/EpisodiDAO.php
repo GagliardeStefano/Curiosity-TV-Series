@@ -41,7 +41,7 @@
         {
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT Titolo, Durata, Descrizione, Img FROM serie_episodi WHERE IdStagione = '$idStagione' ");
+            $query = ("SELECT Titolo, Durata, Descrizione, Img FROM serie_episodi WHERE IdStagione = '$idStagione'");
             $res = mysqli_query($mysqli, $query);
 
             $arrayEpisodi = [];
