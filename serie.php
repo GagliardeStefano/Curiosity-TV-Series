@@ -167,10 +167,7 @@
                         </option>
 
                     <?php }  ?>
-
                 </select>
-
-                
             </div>
         </div>
     </section>

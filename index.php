@@ -32,66 +32,69 @@
 
     <body class="bg-dark">
 
-      <header>
+    <header>
 
-        <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div class="container-fluid">
-              <a href="#"> <img class="logo" src="./img/logo.png" alt="logo"> </a> 
-            <a class="navbar-brand" href="#">Curiosity TV Series</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#top">Top</a>
-                </li>
-                <li class="nav-item">
-                  <a onclick="functionCategorie()" class="nav-link">Categorie</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#footer">About us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./register.php">Accedi</a>
-                </li>
-              </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      
-      <!--Sezione Banner Categorie-->
-      <section>
-        <div id="sezioneCategoria" class="categorie hidden-no">
-          <div class="ms-5">
-            <h2>Categorie</h2>
-            <button onclick="functionCategorieNo()" type="button" class="btn-close" aria-label="Close"></button>
-          </div>
-            
-          <div class="row row-cols-12 ms-5 mb-5 mt-5">
-            <?php for($i=0; $i < $num; $i++){ ?>
-
-              <div class="col-3 mb-2">
-                <a href="categoria.php?id=<?php echo $AllCateg[$i] -> getCategID() ?>">
-                  <h5><?php echo $AllCateg[$i] -> getCategNome() ?> </h5>
-                </a>
-              </div>
-            <?php } ?>
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a href="#"> <img class="logo" src="./img/logo.png" alt="logo"> </a> 
+          <a class="navbar-brand" href="#">Curiosity TV Series</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#top">Top</a>
+              </li>
+              <li class="nav-item">
+                <a id="categorie" class="nav-link" onclick="functionCategorie()">Categorie</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./register.php">Accedi</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
         </div>
-      </section>
+      </nav>
+    </header>
+
+      
+    <!--Sezione Banner Categorie-->
+    <section>
+    <div id="sezioneCategoria" class="categorie hidden-no">
+      <div class="ms-5">
+        <h2>Categorie</h2>
+        <button onclick="functionCategorieNo(), functionSfocaturaNo()" type="button" class="btn-close" aria-label="Close"></button>
+      </div>
+            
+      <div class="row row-cols-12 ms-5 mb-5 mt-5">
+        <?php for($i=0; $i < $num; $i++){ ?>
+
+          <div class="col-3 mb-2">
+            <a href="categoria.php?id=<?php echo $AllCateg[$i] -> getCategID() ?>">
+              <h5><?php echo $AllCateg[$i] -> getCategNome() ?> </h5>
+            </a>
+          </div>
+        <?php } ?>
+      </div>
+    </div>
+  </section>
 
 
+    <?php       
+      $carosello1 = $serie -> get1SerieCarousel();
+    ?>
      <!--Sezione Carousel-->
       <section>
         <div class="container ">
@@ -102,37 +105,40 @@
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner ">
-                  <div class="carousel-item active">
+                <div class="carousel-inner">
 
-                    <img src="./serieTv/StrangerThings/StrangerThingsOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h1 class="testo fst-italic">Stranger Things</h1>
-                      <h2 class="testo fst-italic">2017 - in corso...</h2>
-                      <br>
+                  <?php for($z=0; $z < 1; $z++){ ?>
+
+                    <div class="carousel-item active">
+                      <a href="./serie.php?id=<?php echo $carosello1[0] -> getID() ?>"><img src="<?php echo $carosello1[0] -> getimg() ?>" class="w-100 p-5 img-fluid d-block rounded" alt="..."></a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h1 class="testo fst-italic"><?php echo $carosello1[0] -> getNome() ?></h1>
+                        <h2 class="testo fst-italic"><?php echo $carosello1[0] -> getAnnoI() ?></h2>
+                        <br>
+                      </div>
+                    </div>
+          
+                    <div class="carousel-item">
+                      <a href="./serie.php?id=<?php echo $carosello1[1] -> getID() ?>"><img src="<?php echo $carosello1[1] -> getimg() ?>" class="w-100 p-5 img-fluid d-block rounded" alt="..."></a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h1 class="testo fst-italic"><?php echo $carosello1[1] -> getNome() ?></h1>
+                        <h2 class="testo fst-italic"><?php echo $carosello1[1] -> getAnnoI() ?></h2>
+                        <br>
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="carousel-item">
-                    
-                    <img src="./serieTv/TheWitcher/TheWitcherOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h1 class="testo">The Witcher</h1>
-                      <h2 class="testo fst-italic">2020 - in corso...</h2>
-                      <br>
+                  
+                    <div class="carousel-item ">
+                      <a href="./serie.php?id=<?php echo $carosello1[2] -> getID() ?>"><img src="<?php echo $carosello1[2] -> getimg() ?>" class="w-100 p-5 img-fluid d-block rounded" alt="..."></a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h1 class="testo fst-italic"><?php echo $carosello1[2] -> getNome() ?></h1>
+                        <h2 class="testo fst-italic"><?php echo $carosello1[2] -> getAnnoI() ?></h2>
+                        <br>
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="carousel-item">
-                    
-                    <img src="./serieTv/Vikings/VikingsOrizzontale.jpg" class="w-100 p-5 img-fluid d-block rounded" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h1 class="testo">Vikings</h1>
-                      <h2 class="testo fst-italic">2013 - 2021</h2>
-                      <br>
-                    </div>
+                  <?php } ?>
 
-                  </div>
                 </div>
                 <button class="carousel-control-prev frecce" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>

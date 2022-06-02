@@ -6,7 +6,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie");
+            $query = ("SELECT * FROM serie WHERE voto>8 LIMIT 20");
             $res = mysqli_query($mysqli, $query);
 
             $arraySerie=[];
@@ -23,7 +23,7 @@
 
             require './partials/ConnectDB.php';
 
-            $selectNum = ("SELECT * FROM serie");
+            $selectNum = ("SELECT * FROM serie WHERE voto>8 LIMIT 20");
             $res = mysqli_query($mysqli, $selectNum);
 
             return $res -> num_rows;
@@ -47,6 +47,23 @@
                 }
             }
         }    
+
+        public function get1SerieCarousel(){
+            require './partials/ConnectDB.php';
+
+            $query = ("SELECT idSerie, nome, anno_inizio, img_orizzontale FROM serie ORDER BY rand() limit 3");
+            $res = mysqli_query($mysqli, $query);
+
+            $array = [];
+            for($i=0; $i<$row = mysqli_fetch_array($res); $i++){
+                $objCarousel = new Serie($row['idSerie'],$row['nome'],"","","",$row['anno_inizio'],$row['img_orizzontale']);
+                array_push($array, $objCarousel);
+            }
+
+            return $array;
+        }
+
+        
         
     }
     

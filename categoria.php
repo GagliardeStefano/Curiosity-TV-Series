@@ -47,13 +47,13 @@
               <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a id="categorie" class="nav-link" onclick="functionCategorie(), functionSfocatura()">Categorie</a>
+              <a id="categorie" class="nav-link" onclick="functionCategorie()">Categorie</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#footer">About us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./register.html">Accedi</a>
+              <a class="nav-link" href="./register.php">Accedi</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -84,10 +84,6 @@
         <?php } ?>
       </div>
     </div>
-  </section>
-
-  <section>
-    <div id="sezioneSfocatura" class="sfocatura hidden-no"></div>
   </section>
 
 
