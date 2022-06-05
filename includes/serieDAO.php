@@ -6,7 +6,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie WHERE voto>8 LIMIT 20");
+            $query = ("SELECT * FROM serie LIMIT 5");
             $res = mysqli_query($mysqli, $query);
 
             $arraySerie=[];
@@ -16,6 +16,7 @@
                 $oSerie = new Serie($row['idSerie'], $row['nome'], $row['trama'], $row['locandina'], $row['voto'], $row['anno_inizio'], $row['img_orizzontale']);
                 array_push($arraySerie, $oSerie);
             }
+            
             return $arraySerie;
         }
 
@@ -23,7 +24,7 @@
 
             require './partials/ConnectDB.php';
 
-            $selectNum = ("SELECT * FROM serie WHERE voto>8 LIMIT 20");
+            $selectNum = ("SELECT * FROM serie LIMIT 5");
             $res = mysqli_query($mysqli, $selectNum);
 
             return $res -> num_rows;

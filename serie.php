@@ -99,48 +99,33 @@
 
     <!--Sezione Informazioni-->
     <section>
-        <div class="container ">
+        <div class="container testo">
             <div class="row row-cols-auto">
+                <img src="<?php echo $ris -> getimg() ?>" alt="">
 
-                <div class="col-12" style="text-align: center;">
-                    <img src=" <?php echo $ris -> getimg()   ?> " class="img-fluid w-75" alt="...">
+                <div class="mt-5">
+                    <h3>Trama</h3>
+                    <p><?php echo $ris -> getTrama() ?></p>
                 </div>
-
-                <div id="info" ></div>
-                <br> <br>
-                <section>    
-                    <div class="container">
-                        <div class="card-body">
-                            <div class="row row-cols-auto">
-                                <div class="col testo ">
-                                    <h3>Trama</h3>
-                                    <p> <?php echo $ris -> getTrama() ?> </p>
-                                </div>
-
-                                <?php   if($risCateg == null){ echo (""); }
-                                
-                                else{ ?>
-                                    <div class="col testo mt-5 row-cols-auto">
-                                        
-                                        <h3>Categorie</h3>
-                                        <div class="categ-serie">
-                                            <?php for($i=0; $i < $risNumCateg; $i++){    ?>
-                                                <a class="link-categ" href="categoria.php?id=<?php echo $risCateg[$i] -> getCategID() ?>">    
-                                                    <p> <?php echo $risCateg[$i] -> getCategNome()  ?> </p>
-                                                </a>
-                                            <?php } ?>  
-                                        </div>    
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
             </div>
-          </div>
+        </div>
+
+        <div class="container testo">
+            <div class="row row-cols-auto">
+                <div class="mt-5">
+                    <h3>Categorie</h3>
+                    <div class="mt-2 d-inline-flex">
+                        <?php for($i=0; $i<$risNumCateg; $i++){ ?>
+                            <a class="link-categ" href="./categoria.php?id=<?php echo $risCateg[$i] -> getCategID(); ?>">
+                                <p class="border border-light ms-1 rounded-pill border-3 p-2"><?php echo $risCateg[$i] -> getCategNome() ?></p>
+                            </a>                
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <?php 
         require './includes/EpisodiClass.php';
@@ -159,7 +144,7 @@
     <section>
         <div class="container">
             <div class="row row-cols-auto">
-                <select name="scelta" class="form-select" aria-label="Default select example" onchange="episodi()" id="selezione">
+                <select name="scelta" class="form-select" aria-label="Default select example" id="selezione" onchange="episodi()" >
                     <option selected>Seleziona la Stagione</option>
 
                     <?php for($j=0; $j<$NumStagione; $j++){ ?>
@@ -198,40 +183,7 @@
     
 
     <!--Sezione Footer-->
-    <div id="footer"></div>
-      <br>
-        <section>
-            <footer>
-                <div class="container">
-                    <div class="row row-cols-auto">
-
-                    <div class="col-6">
-                        <a href="#">
-                        <img class="logo mt-5" src="./img/logo.png" alt="">
-                        </a>
-                        <h3 class="testo">Curiosity TV Series</h3>
-                    </div>
-
-                    <div class="col-6">
-                        <h4 class="mt-5">I miei contatti</h4>
-
-                        <a href="https://www.linkedin.com/in/stefano-gagliarde-005aa4222/" class="link-footer" target="_blanck">
-                        <ion-icon name="logo-linkedin"></ion-icon>
-                        </a> 
-
-                        <a href="https://github.com/GagliardeStefano" class="link-footer" target="_blanck">
-                        <ion-icon name="logo-github"></ion-icon>
-                        </a>
-
-                        <a href="mailto:stefanogagliarde32@gmail.com" class="link-footer" target="_blanck">
-                        <ion-icon name="at-outline"></ion-icon>
-                        </a>
-                    </div>
-
-                    </div>
-                </div>
-            </footer>
-        </section> 
+    <?php require './partials/footer.php' ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

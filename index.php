@@ -158,7 +158,7 @@
       <div id="top"></div>
       <br>
       <section>
-        <div class="container mt-5 me-5">
+        <div class="container mt-5">
           <h2 class="testo text-start">Top</h2>
           <div class="row row-cols-auto">
 
@@ -203,42 +203,7 @@
 
       
       <!--Sezione Footer-->
-    <div id="footer"></div>
-      <br>
-        <section>
-            <footer>
-                <div class="container">
-                    <div class="row row-cols-auto">
-
-                    <div class="col-6">
-                        <a href="#">
-                        <img class="logo mt-5" src="./img/logo.png" alt="">
-                        </a>
-                        <h3 class="testo">Curiosity TV Series</h3>
-                    </div>
-
-                    <div class="col-6">
-                        <h4 class="mt-5">I miei contatti</h4>
-
-                        <a href="https://www.linkedin.com/in/stefano-gagliarde-005aa4222/" class="link-footer" target="_blanck">
-                        <ion-icon name="logo-linkedin"></ion-icon>
-                        </a> 
-
-                        <a href="https://github.com/GagliardeStefano" class="link-footer" target="_blanck">
-                        <ion-icon name="logo-github"></ion-icon>
-                        </a>
-
-                        <a href="mailto:stefanogagliarde32@gmail.com" class="link-footer" target="_blanck">
-                        <ion-icon name="at-outline"></ion-icon>
-                        </a>
-                    </div>
-
-                    </div>
-                </div>
-            </footer>
-        </section> 
-
-
+      <?php require './partials/footer.php' ?>
 
       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -8,7 +8,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id");
+            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id LIMIT 4");
             $res = mysqli_query($mysqli, $query);
 
             $arrayCateg = [];
@@ -26,7 +26,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id");
+            $query = ("SELECT * FROM serie_categoria JOIN categoria ON serie_categoria.IdCategoria = categoria.idCateg WHERE IdSerie=$id LIMIT 4");
             $res = mysqli_query($mysqli, $query);
 
             return $res -> num_rows;
@@ -82,7 +82,7 @@
         {
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT idCateg, nome FROM categoria WHERE idCateg=$id");
+            $query = ("SELECT idCateg, nome FROM categoria WHERE idCateg=$id ");
             $ris = mysqli_query($mysqli, $query);
 
             for($i=0; $i < $row = mysqli_fetch_array($ris); $i++){

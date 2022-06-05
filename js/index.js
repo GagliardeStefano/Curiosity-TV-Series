@@ -6,7 +6,7 @@ function functionCategorieNo(){
     document.getElementById("sezioneCategoria").style.visibility = "hidden"
 }
 
-function episodi(){
-    var selezione = document.getElementById("selezione").value;
-    console.log(selezione);
+onchange = function episodi(){
+    var select = document.getElementById("selezione")
+    console.log(select.value)
 }
