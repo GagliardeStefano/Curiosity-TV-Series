@@ -1,8 +1,8 @@
 <?php   
 
-    require "./includes/SerieDAO.php";
-    require "./includes/SerieClass.php";
-    require "./includes/CategoriaClass.php";
+    require './includes/SerieDAO.php';
+    require './includes/SerieClass.php';
+    require './includes/CategoriaClass.php';
     require './includes/CategoriaDAO.php';
 
     $serie = new SerieDAO();
@@ -35,6 +35,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
+
 <body class="bg-dark">
 
     <header>
@@ -79,7 +80,7 @@
             <div class="row row-cols-auto">
                 <div class="col-4">
                     <div class="col">
-                        <h1 class="testo">  <?php echo $ris -> getNome() ?></h1>
+                        <h1 class="testo" style="width: 30rem;">  <?php echo $ris -> getNome() ?></h1>
                         <p class="testo"> <?php echo $ris -> getAnnoI()?>  </p>
                     </div>
 
@@ -141,57 +142,66 @@
     ?>
 
     <!--Sezione Episodi-->
-    <section>
-        <div class="container">
+    <section id="stagioni">
+        <div class="container testo mt-5">
             <div class="row row-cols-auto">
-                <select name="scelta" class="form-select" aria-label="Default select example" id="selezione" onchange="episodi()" >
-                    <option selected>Seleziona la Stagione</option>
 
+                <div>
+                    <h3>Stagioni e Episodi</h3>
+                    <p class="mt-2">Seleziona la stagione</p>
+                </div>
+
+                <select name="scelta" class="form-select testo" aria-label="Default select example" id="selezione" onchange="loadXmlDOC()" >
+                   
                     <?php for($j=0; $j<$NumStagione; $j++){ ?>
                         
-                    
-                        <option value="<?php echo $num++?>">
-                            <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
+                        <option  value="<?php echo $num++?>">
 
-                            <?php array_push($idStagione, $DatiStagione[$j] -> getIdStagione()); ?>
-
-                            <p class="testo"><?php echo "------ ID: ".$idStagione[$j] ?></p>
-
+                            <p ><?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?></p>
+                            
                         </option>
+                           
+                        
+                        <p id="idStagione" onchange="episodi()"><?php $id = $DatiStagione[$j] -> getIdStagione(); ?></p>
 
+                        <p><?php echo $id ?></p>
                     <?php }  ?>
 
-                    
                 </select>
-                
-                <?php for($y=0; $y<count($DatiEpisodi); $y++){ ?>
 
-                    <div class="mt-5 container row-cols-auto">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<?php echo $DatiEpisodi[$y] -> getImgEpisodio() ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="testo card-title"><?php echo $DatiEpisodi[$y] -> getTitoloEpisodio() ?></h5>
-                                <p class="testo card-text"><?php echo $DatiEpisodi[$y] -> getDescriozioneEpisodio() ?></p>
+                <section id="episodi" style="display: contents;">
+
+                    <div id="card" class="card mt-5 testo" style="width: 18rem;">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                             <div>
+                                <h5 class="card-title"></h5>
+                                <h6 class="card-text durata"></h6>
                             </div>
+                            <p class="card-text"></p>
                         </div>
                     </div>
 
-                <?php } ?>
+                </section>
             </div>
         </div>
-    </section>
+    </section>  
     
 
     <!--Sezione Footer-->
     <?php require './partials/footer.php' ?>
 
 
+    <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    
     <script src="./js/index.js"></script>
+    
 </body>
 </html>

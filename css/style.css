@@ -202,3 +202,8 @@ footer ion-icon{
 .link-categ:hover{
     color: grey !important;
 }
+
+.durata{
+    float: right;
+    margin-top: -2rem;
+}
