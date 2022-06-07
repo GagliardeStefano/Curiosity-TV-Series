@@ -152,37 +152,44 @@
                 </div>
 
                 <select name="scelta" class="form-select testo" aria-label="Default select example" id="selezione" onchange="loadXmlDOC()" >
+
+                    <option value="0">Scegli una Stagione</option>
                    
                     <?php for($j=0; $j<$NumStagione; $j++){ ?>
                         
-                        <option  value="<?php echo $num++?>">
+                        <option value="<?php echo $id = $DatiStagione[$j] -> getIdStagione(); ?>">
 
-                            <p ><?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?></p>
+                            <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
                             
                         </option>
-                           
-                        
-                        <p id="idStagione" onchange="episodi()"><?php $id = $DatiStagione[$j] -> getIdStagione(); ?></p>
 
-                        <p><?php echo $id ?></p>
                     <?php }  ?>
+                </select>      
+                
+                
+                <?php
+                        $DatiEpisodi = $stagione -> GetEpisodi($DatiStagione[0] -> getIdStagione());
+                ?>
 
-                </select>
+               
+        
+                    <section id="episodi" style="display: contents;">
 
-                <section id="episodi" style="display: contents;">
+                        <?php for($m = 0; $m<count($DatiEpisodi); $m++){ ?>
 
-                    <div id="card" class="card mt-5 testo" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body">
-                             <div>
-                                <h5 class="card-title"></h5>
-                                <h6 class="card-text durata"></h6>
+                            <div id="card" class="card mt-5 testo me-4" style="width: 18rem;">
+                                <img src="<?php echo $DatiEpisodi[$m] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <div>
+                                        <h5 class="card-title" style="width: 12rem;"><?php echo $DatiEpisodi[$m] -> getTitoloEpisodio()  ?></h5>
+                                        <h6 class="card-text durata"><?php echo $DatiEpisodi[$m] -> getDurataEpisodio() ?></h6>
+                                    </div>
+                                    <p class="card-text"><?php echo $DatiEpisodi[$m] -> getDescriozioneEpisodio()  ?></p>
+                                </div>
                             </div>
-                            <p class="card-text"></p>
-                        </div>
-                    </div>
-
-                </section>
+                        <?php } ?>
+                    </section>
+                      
             </div>
         </div>
     </section>  

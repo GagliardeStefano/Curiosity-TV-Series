@@ -6,54 +6,62 @@ function functionCategorieNo(){
     document.getElementById("sezioneCategoria").style.visibility = "hidden"
 }
 
+
 function loadXmlDOC(){
 
+    var IdStagione;
+    var selezione;
+
     var xhttp = new XMLHttpRequest();
+
+    selezione = document.getElementById("selezione").value;
+            
+    IdStagione = selezione;
+
+    console.log(IdStagione);
+
 
     xhttp.onreadystatechange = function() {
         
         if (this.readyState == 4 && this.status == 200) {
+
             episodi(this);
+
         }
     };
+    
+    console.log("ID PRIMA: "+IdStagione)
 
-    xhttp.open("GET", "./serieXML.php?idStagione=1", true);
+
+    xhttp.open("GET", "./serieXML.php?idStagione="+IdStagione);
     xhttp.send();
     
+    console.log("ID DOPO: "+IdStagione)
 }   
 
 function episodi(xml) {
     
-    var idStagione = document.getElementById("idStagione");
-    console.log("IdStagione: "+idStagione);
-
     var responseXML = xml.responseXML;
-    console.log(responseXML);        
-
-    var episodio = responseXML.getElementsByTagName('Episodio');
-    console.log(episodio)
+    var episodioXML = responseXML.getElementsByTagName('Episodio');
             
-        
-    for (var i = 0; i< episodio.length; i++) {
+    const card = document.getElementById("card");
 
-        const card = document.getElementById("card");
-        const clone = card.cloneNode(true);
+    var SezioneEpisodi = document.getElementById("episodi");
+
+    for (var i = 0; i< episodioXML.length; i++) {
         
+        const clone = card.cloneNode(true);
         clone.setAttribute('id', 'card'+i);
 
-        document.getElementById("episodi").append(clone);
+        SezioneEpisodi.append(clone);
+
+        clone.getElementsByTagName("h5")[0].innerHTML = responseXML.getElementsByTagName("Titolo")[i].childNodes[0].nodeValue;
        
-        var Titolo = (clone.getElementsByTagName("h5").innerHTML = responseXML.getElementsByTagName("Titolo")[i].childNodes[0].nodeValue);
-        console.log(Titolo);
-
-        var Durata = (clone.getElementsByTagName("h6").innerHTML = responseXML.getElementsByTagName("Durata")[i].childNodes[0].nodeValue);
-        console.log(Durata);
+        clone.getElementsByTagName("h6")[0].innerHTML = responseXML.getElementsByTagName("Durata")[i].childNodes[0].nodeValue;
                 
-        var Desc = (clone.getElementsByTagName("p").innerHTML = responseXML.getElementsByTagName("Descrizione")[i].childNodes[0].nodeValue);
-        console.log(Desc);
-
-        var img = (clone.getElementsByTagName("img").src = responseXML.getElementsByTagName("Img")[i].childNodes[0].nodeValue);
-        console.log(img);
+        clone.getElementsByTagName("p")[0].innerHTML = responseXML.getElementsByTagName("Descrizione")[i].childNodes[0].nodeValue;
+    
+        clone.getElementsByTagName("img")[0].src = responseXML.getElementsByTagName("Img")[i].childNodes[0].nodeValue;
 
     }
 
