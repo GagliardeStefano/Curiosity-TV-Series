@@ -6,7 +6,7 @@
 
             require './partials/ConnectDB.php';
 
-            $query = ("SELECT * FROM serie");
+            $query = ("SELECT * FROM serie LIMIT 4");
             $res = mysqli_query($mysqli, $query);
 
             $arraySerie=[];
@@ -24,7 +24,7 @@
 
             require './partials/ConnectDB.php';
 
-            $selectNum = ("SELECT * FROM serie");
+            $selectNum = ("SELECT * FROM serie LIMIT 4");
             $res = mysqli_query($mysqli, $selectNum);
 
             return $res -> num_rows;
