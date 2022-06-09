@@ -1,4 +1,5 @@
 <?php   
+    header('Content-type: text/html; charset=utf-8');
 
     require './includes/SerieDAO.php';
     require './includes/SerieClass.php';
@@ -26,6 +27,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 
     <title> <?php echo $ris -> getNome()?> </title>
 
@@ -39,38 +42,38 @@
 <body class="bg-dark">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <a href="#"> <img class="logo" src="./img/logo.png" alt="logo"> </a> 
-            <a class="navbar-brand" href="#">Curiosity TV Series</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#info">Informazioni</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#stagioni">Stagioni</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#footer">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./register.html">Accedi</a>
-                </li>
-                </ul>
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a href="index.php"> <img class="logo" src="./img/logo.png" alt="logo"> </a> 
+          <a class="navbar-brand" href="#">Curiosity TV Series</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#info">Informazioni</a>
+              </li>
+              <li class="nav-item">
+                <a id="categorie" class="nav-link" href="#stagioni">Stagioni</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./register.php">Accedi</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </header>
 
     
@@ -99,11 +102,13 @@
 
 
     <!--Sezione Informazioni-->
-    <section>
+    <section >
         <div class="container testo">
             <div class="row row-cols-auto">
                 <img src="<?php echo $ris -> getimg() ?>" alt="">
 
+                <div  id="info"></div>
+                
                 <div class="mt-5">
                     <h3>Trama</h3>
                     <p><?php echo $ris -> getTrama() ?></p>
@@ -111,18 +116,17 @@
             </div>
         </div>
 
-        <div class="container testo">
+        <div class="container mt-5 testo">
+            <h3>Categorie</h3>
+
             <div class="row row-cols-auto">
-                <div class="mt-5">
-                    <h3>Categorie</h3>
-                    <div class="mt-2 d-inline-flex">
-                        <?php for($i=0; $i<$risNumCateg; $i++){ ?>
-                            <a class="link-categ" href="./categoria.php?id=<?php echo $risCateg[$i] -> getCategID(); ?>">
-                                <p class="border border-light ms-1 rounded-pill border-3 p-2"><?php echo $risCateg[$i] -> getCategNome() ?></p>
-                            </a>                
-                        <?php } ?>
-                    </div>
-                </div>
+                
+                <?php for($i=0; $i<$risNumCateg; $i++){ ?>
+                    <a class="link-categ" href="./categoria.php?id=<?php echo $risCateg[$i] -> getCategID(); ?>">
+                        <p class="border border-light rounded-pill border-3 mt-3 p-2"><?php echo $risCateg[$i] -> getCategNome() ?></p>
+                    </a>                
+                <?php } ?>
+               
             </div>
         </div>
     </section>
@@ -136,63 +140,67 @@
         $NumStagione = $stagione -> GetNumStagioni($getID);
         $DatiStagione = $stagione -> GetStagioni($getID);
      
-        $num = 1;
-        
-        $idStagione = [];
+        $ParametroStagione = $DatiStagione[0] -> getIdStagione();
+        $DatiEpisodi = $stagione -> GetEpisodi($ParametroStagione);
+    
+        $numEpisodio = 1;
     ?>
 
-    <!--Sezione Episodi-->
-    <section id="stagioni">
-        <div class="container testo mt-5">
-            <div class="row row-cols-auto">
+    <?php if($DatiEpisodi == null){
+        //
+    }else{ ?>
 
-                <div>
-                    <h3>Stagioni e Episodi</h3>
-                </div>
+        <div id="stagioni"></div>
+        <br>
+        <!--Sezione Episodi-->
+        <section>
+            <div class="container testo mt-5">
+                <div class="row row-cols-auto">
 
-                <select name="scelta" class="form-select testo" aria-label="Default select example" id="selezione" onchange="loadXmlDOC()" >
+                    <div>
+                        <h3>Stagioni e Episodi</h3>
+                    </div>
 
-                    <option value="">Scegli una Stagione</option>
-                   
-                    <?php for($j=0; $j<$NumStagione; $j++){ ?>
-                        
-                        <option value="<?php echo $DatiStagione[$j] -> getIdStagione(); ?>">
+                    <select name="scelta" class="form-select testo" aria-label="Default select example" id="selezione" onchange="loadXmlDOC()" >
 
-                            <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
+                        <option value="">Scegli una Stagione</option>
+                    
+                        <?php for($j=0; $j<$NumStagione; $j++){ ?>
                             
-                        </option>
+                            <option value="<?php echo $DatiStagione[$j] -> getIdStagione(); ?>">
 
-                    <?php }  ?>
-                </select>      
-                
-                
-                <?php
-                    $DatiEpisodi = $stagione -> GetEpisodi($DatiStagione[0] -> getIdStagione());
-                ?>
+                                <?php echo "Stagione ".$DatiStagione[$j] -> getNumStagione(); ?>
+                                
+                            </option>
 
-               
-        
-                    <section id="ContenitoreEpisodi" >
-                        <div id="episodi" class="row row-cols-auto">
-                            <?php for($m = 0; $m<count($DatiEpisodi); $m++){ ?>
+                        <?php }  ?>
+                    </select>      
+                    
+                        <section id="ContenitoreEpisodi" >
+                            <div id="episodi" class="row row-cols-auto">
+                                <?php for($m = 0; $m<count($DatiEpisodi); $m++){ ?>
 
-                                <div id="card<?php echo $m ?>" class="card mt-5 testo me-4" style="width: 18rem;">
-                                    <img src="<?php echo $DatiEpisodi[$m] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <div>
-                                            <h5 class="card-title" style="width: 12rem;"><?php echo $DatiEpisodi[$m] -> getTitoloEpisodio()  ?></h5>
-                                            <h6 class="card-text durata"><?php echo $DatiEpisodi[$m] -> getDurataEpisodio() ?></h6>
+                                    
+                                    <div id="card<?php echo $m ?>" class="card mt-5 testo me-4" style="width: 18rem;">
+                                        <img src="<?php echo $DatiEpisodi[$m] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <div>
+                                               
+                                                <h5 class="card-title" style="width: 10rem;"><?php echo "  ".$DatiEpisodi[$m] -> getTitoloEpisodio()  ?></h5>
+                                                <h6 class="card-text durata"><?php echo $DatiEpisodi[$m] -> getDurataEpisodio() ?></h6>
+                                            </div>
+                                            <p class="card-text"><?php echo $DatiEpisodi[$m] -> getDescriozioneEpisodio()  ?></p>
                                         </div>
-                                        <p class="card-text"><?php echo $DatiEpisodi[$m] -> getDescriozioneEpisodio()  ?></p>
                                     </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </section>
-                      
+                                <?php } ?>
+                            </div>
+                        </section>
+                        
+                </div>
             </div>
-        </div>
-    </section>  
+        </section>  
+    
+    <?php } ?> 
     
 
     <!--Sezione Footer-->

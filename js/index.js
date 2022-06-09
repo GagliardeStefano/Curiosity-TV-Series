@@ -15,20 +15,26 @@ function loadXmlDOC(){
     var xhttp = new XMLHttpRequest();
 
     selezione = document.getElementById("selezione").value;
+
+    if(selezione == ""){
+
+    }else{
+        IdStagione = selezione;
+
+        xhttp.onreadystatechange = function() {
             
-    IdStagione = selezione;
+            if (this.readyState == 4 && this.status == 200) {
 
-    xhttp.onreadystatechange = function() {
-        
-        if (this.readyState == 4 && this.status == 200) {
+                episodi(this);
 
-            episodi(this);
+            }
+        };
 
-        }
-    };
-
-    xhttp.open("GET", "./serieXML.php?idStagione="+IdStagione);
-    xhttp.send();
+        xhttp.open("GET", "./serieXML.php?idStagione="+IdStagione);
+        xhttp.send();
+    }
+            
+    
     
 }   
 
@@ -37,22 +43,19 @@ function episodi(xml) {
     var responseXML = xml.responseXML;
     var episodioXML = responseXML.getElementsByTagName('Episodio');
 
-    var ContenitoreEpisodi = document.getElementById("ContenitoreEpisodi");
-    var episodi = document.getElementById("episodi")
-    const card = document.getElementById("card0");
+    var card = document.getElementById("card0");
 
-    const episodiClonati = episodi.cloneNode(true);
+    var episodi = document.getElementById("episodi");
     
-    card.remove();
-    
-    episodiClonati.append(ContenitoreEpisodi);
-
+    episodi.innerHTML = "";
+   
     for (var i = 0; i< episodioXML.length; i++) {
         
 
         const clone = card.cloneNode(true);
         clone.setAttribute('id', 'card'+i);
-        episodi.append(clone);
+        episodi.appendChild(clone)
+       
 
         clone.getElementsByTagName("h5")[0].innerHTML = responseXML.getElementsByTagName("Titolo")[i].childNodes[0].nodeValue;
        
