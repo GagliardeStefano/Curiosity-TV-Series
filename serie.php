@@ -116,19 +116,21 @@
             </div>
         </div>
 
-        <div class="container mt-5 testo">
-            <h3>Categorie</h3>
+        <?php if($risCateg != null){?>
+            <div class="container mt-5 testo">
+                <h3>Categorie</h3>
 
-            <div class="row row-cols-auto">
+                <div class="row row-cols-auto">
+                    
+                    <?php for($i=0; $i<$risNumCateg; $i++){ ?>
+                        <a class="link-categ" href="./categoria.php?id=<?php echo $risCateg[$i] -> getCategID(); ?>">
+                            <p class="border border-light rounded-pill border-3 mt-3 p-2"><?php echo $risCateg[$i] -> getCategNome() ?></p>
+                        </a>                
+                    <?php } ?>
                 
-                <?php for($i=0; $i<$risNumCateg; $i++){ ?>
-                    <a class="link-categ" href="./categoria.php?id=<?php echo $risCateg[$i] -> getCategID(); ?>">
-                        <p class="border border-light rounded-pill border-3 mt-3 p-2"><?php echo $risCateg[$i] -> getCategNome() ?></p>
-                    </a>                
-                <?php } ?>
-               
+                </div>
             </div>
-        </div>
+        <?php }?>
     </section>
 
 
@@ -146,10 +148,8 @@
         $numEpisodio = 1;
     ?>
 
-    <?php if($DatiEpisodi == null){
-        //
-    }else{ ?>
-
+    <?php if($DatiEpisodi != null){ ?>
+        
         <div id="stagioni"></div>
         <br>
         <!--Sezione Episodi-->
@@ -200,8 +200,9 @@
             </div>
         </section>  
     
-    <?php } ?> 
-    
+    <?php } ?>
+
+            
 
     <!--Sezione Footer-->
     <?php require './partials/footer.php' ?>

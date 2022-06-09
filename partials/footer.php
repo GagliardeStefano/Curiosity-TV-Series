@@ -1,7 +1,7 @@
 <div id="footer" class="mt-5"></div>
       <br>
         <section>
-            <footer>
+            <footer class="w-100">
                 <div class="container">
                     <div class="row row-cols-auto">
 
