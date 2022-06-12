@@ -54,7 +54,8 @@
 
                 if($arrayErroriLogin == null){
                     session_start();
-                    $_SESSION['id'] = $utente -> getUtente($mail);
+                    $idUtente = $utente -> getUtente($mail);
+                    $_SESSION['id'] = $idUtente;
                     header("location: index.php");
                 }
             }

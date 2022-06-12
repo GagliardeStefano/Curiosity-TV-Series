@@ -1,14 +1,29 @@
 <?php
 
-    session_start();
-    $sessione = $_SESSION['email'];
+  require './includes/UtenteClass.php';
+  require './includes/UtenteDAO.php';
+  require './includes/CategoriaDAO.php';
+  require './includes/CategoriaClass.php';
 
+  $utente = new UtenteDAO();
+  $categoria = new CategoriaDAO();
+ 
+ 
+  session_start(); 
 
+  $serieUtente = $utente -> GetSerieUtente($_SESSION['id']);
+
+  if($_SESSION == null){
+
+    header("location: index.php");
+
+  }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +40,6 @@
 </head>
 <body class="bg-dark">
     
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -70,29 +84,28 @@
         </nav>
     </header>
 
-
+    
     <section>
         <div class="container mt-5">
-          <h2 class="testo text-start">Top</h2>
+          <h2 class="testo text-start">Preferiti</h2>
           <div class="arrow">
             <div class="arrow-top"></div>
             <div class="arrow-bottom"></div>
           </div>
           <div class="row row-cols-auto">
 
-            <?php for($i=0; $i < $num = count($risultato); $i++){ ?>
+            <?php for($i=0; $i < count($serieUtente); $i++){ ?>
               <div class="col mb-5 me-4">
-                <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
-                  <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
+                <a href="./serie.php?id=<?php echo $serieUtente[$i] -> getID() ?>">
+                  <img src=" <?php echo $serieUtente[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
                 </a>
                 <div class="card-body">
-                  <h4 class="testo" style="width: 10rem;"> <?php echo $risultato[$i] -> getNome()  ?> </h4>
-                  <p class="testo"> <?php echo ($risultato[$i] -> getAnnoI())  ?></p>
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $serieUtente[$i] -> getNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($serieUtente[$i] -> getAnnoI())  ?></p>
 
                   <?php  
-                    $ID = $risultato[$i] -> getID();
+                    $ID = $serieUtente[$i] -> getID();
                     $risCateg = $categoria -> getCateg($ID);
-
                   ?>                       
                           
                   <p class="testo" style="width: 10rem;">

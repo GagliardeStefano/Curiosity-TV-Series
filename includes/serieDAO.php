@@ -68,6 +68,7 @@
                 $objCateg = new SerieCateg($row['idSerie'], $row['nome'], $row['locandina'], $row['anno_inizio'], $row['voto']);
                 array_push($arraySerieCateg, $objCateg);
             }
+            
             return $arraySerieCateg;
         }
     }

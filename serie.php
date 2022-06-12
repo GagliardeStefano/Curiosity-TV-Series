@@ -117,7 +117,7 @@
                         
                     </div>
 
-                    <?php if($_SESSION['email']==null){ ?>
+                    <?php if($_SESSION == null){ ?>
 
                         <div class="col-2" style="float: right;">
                             <svg class="likeNo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heartbreak-fill" viewBox="0 0 16 16">
