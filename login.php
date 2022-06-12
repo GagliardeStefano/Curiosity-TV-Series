@@ -104,13 +104,13 @@
 
         <?php if(isset($arrayErroriLogin)){   ?>
 
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text:'<?php for($i=0; $i < count($arrayErroriLogin, COUNT_NORMAL); $i++){ echo $arrayErroriLogin[$i]; }?>' 
-            })
-        </script>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text:'<?php for($i=0; $i < count($arrayErroriLogin, COUNT_NORMAL); $i++){ echo $arrayErroriLogin[$i]; }?>' 
+                })
+            </script>
         
        <?php } ?>
 

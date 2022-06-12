@@ -1,17 +1,17 @@
 <?php
 
-  require './includes/UtenteClass.php';
-  require './includes/UtenteDAO.php';
+  require './includes/SeriePreferiteDAO.php';
+  require './includes/SeriePreferiteClass.php';
   require './includes/CategoriaDAO.php';
   require './includes/CategoriaClass.php';
 
-  $utente = new UtenteDAO();
+  $seriePrefe = new SeriePreferiteDAO();
   $categoria = new CategoriaDAO();
  
  
   session_start(); 
 
-  $serieUtente = $utente -> GetSerieUtente($_SESSION['id']);
+  $serieUtente = $seriePrefe -> GetSerieUtente($_SESSION['id']);
 
   if($_SESSION == null){
 
@@ -33,6 +33,7 @@
 
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" href="./css/style.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -96,15 +97,15 @@
 
             <?php for($i=0; $i < count($serieUtente); $i++){ ?>
               <div class="col mb-5 me-4">
-                <a href="./serie.php?id=<?php echo $serieUtente[$i] -> getID() ?>">
-                  <img src=" <?php echo $serieUtente[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
+                <a href="./serie.php?id=<?php echo $serieUtente[$i] -> getIdSerieUtente() ?>">
+                  <img src=" <?php echo $serieUtente[$i] -> getLocandinaSerieUtente() ?> " class="radius-b locandine" alt="...">
                 </a>
                 <div class="card-body">
-                  <h4 class="testo" style="width: 10rem;"> <?php echo $serieUtente[$i] -> getNome()  ?> </h4>
-                  <p class="testo"> <?php echo ($serieUtente[$i] -> getAnnoI())  ?></p>
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $serieUtente[$i] -> getNomeSerieUtente()  ?> </h4>
+                  <p class="testo"> <?php echo ($serieUtente[$i] -> getAnnoSerieUtente())  ?></p>
 
                   <?php  
-                    $ID = $serieUtente[$i] -> getID();
+                    $ID = $serieUtente[$i] -> getIdSerieUtente();
                     $risCateg = $categoria -> getCateg($ID);
                   ?>                       
                           
@@ -132,5 +133,15 @@
         </div>
     </section>
     
+    <!--Footer-->
+    <?php require './partials/footer.php' ?>
+
+    <!--Script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

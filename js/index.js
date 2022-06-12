@@ -69,19 +69,37 @@ function episodi(xml) {
 
 }
 
-function like() {
-    var like;
+function like(idSerie) {
+    
+    var like = document.getElementById('like').style;
 
-    like = document.getElementById("like");
-    if(like.style.fill == "grey"){
+    if (like.fill == "red") {
 
-        like.style.fill = "red";
+        like.fill = "grey";
 
     }else{
 
-        like.style.fill = "grey";
-        
+        like.fill = "red";
     }
-    
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+            
+        if (this.readyState == 4 && this.status == 200) {}
+    }
+
+    xhttp.open("GET", "inserimentoPreferiti.php?idSerie="+idSerie);
+    xhttp.send();
 }
 
+
+var toastTrigger = document.getElementById('liveToastBtn')
+var toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', () => {
+   var toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  })
+}

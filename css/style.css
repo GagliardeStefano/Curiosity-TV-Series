@@ -212,16 +212,5 @@ footer ion-icon{
     width: 3rem;
     height: 2rem;
     margin-top: -9rem;
-    fill: gray;
     cursor: pointer;
 }
-
-.likeNo{
-    width: 3rem;
-    height: 2rem;
-    margin-top: -9rem;
-    fill: gray;
-}
-
-svg text {display: none;}
-svg g:hover text {display: block;}
