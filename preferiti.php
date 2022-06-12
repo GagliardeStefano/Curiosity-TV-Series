@@ -85,53 +85,69 @@
         </nav>
     </header>
 
-    
-    <section>
-        <div class="container mt-5">
-          <h2 class="testo text-start">Preferiti</h2>
-          <div class="arrow">
-            <div class="arrow-top"></div>
-            <div class="arrow-bottom"></div>
-          </div>
-          <div class="row row-cols-auto">
+    <?php if($serieUtente != null){ ?>
+      
+      <section>
+          <div class="container mt-5">
+            <h2 class="testo text-start">Preferiti</h2>
+            <div class="arrow">
+              <div class="arrow-top"></div>
+              <div class="arrow-bottom"></div>
+            </div>
+            <div class="row row-cols-auto">
 
-            <?php for($i=0; $i < count($serieUtente); $i++){ ?>
-              <div class="col mb-5 me-4">
-                <a href="./serie.php?id=<?php echo $serieUtente[$i] -> getIdSerieUtente() ?>">
-                  <img src=" <?php echo $serieUtente[$i] -> getLocandinaSerieUtente() ?> " class="radius-b locandine" alt="...">
-                </a>
-                <div class="card-body">
-                  <h4 class="testo" style="width: 10rem;"> <?php echo $serieUtente[$i] -> getNomeSerieUtente()  ?> </h4>
-                  <p class="testo"> <?php echo ($serieUtente[$i] -> getAnnoSerieUtente())  ?></p>
+              <?php for($i=0; $i < count($serieUtente); $i++){ ?>
+                <div class="col mb-5 me-4">
+                  <a href="./serie.php?id=<?php echo $serieUtente[$i] -> getIdSerieUtente() ?>">
+                    <img src=" <?php echo $serieUtente[$i] -> getLocandinaSerieUtente() ?> " class="radius-b locandine" alt="...">
+                  </a>
+                  <div class="card-body">
+                    <h4 class="testo" style="width: 10rem;"> <?php echo $serieUtente[$i] -> getNomeSerieUtente()  ?> </h4>
+                    <p class="testo"> <?php echo ($serieUtente[$i] -> getAnnoSerieUtente())  ?></p>
 
-                  <?php  
-                    $ID = $serieUtente[$i] -> getIdSerieUtente();
-                    $risCateg = $categoria -> getCateg($ID);
-                  ?>                       
-                          
-                  <p class="testo" style="width: 10rem;">
-                    <?php 
-                      if($risCateg == null){
+                    <?php  
+                      $ID = $serieUtente[$i] -> getIdSerieUtente();
+                      $risCateg = $categoria -> getCateg($ID);
+                    ?>                       
+                            
+                    <p class="testo" style="width: 10rem;">
+                      <?php 
+                        if($risCateg == null){
 
-                        echo ("");
+                          echo ("");
 
-                      }else if(count($risCateg) < 2){ 
+                        }else if(count($risCateg) < 2){ 
 
-                        echo($risCateg[0] -> getCategNome());
+                          echo($risCateg[0] -> getCategNome());
 
-                      }else{
-                      
-                        echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
+                        }else{
+                        
+                          echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
 
-                      }
-                    ?>
-                  </p> 
+                        }
+                      ?>
+                    </p> 
+                  </div>
                 </div>
-              </div>
-            <?php } ?> 
+              <?php } ?> 
+            </div>
+          </div>
+      </section>
+
+    <?php }else{ ?>
+
+      <div class="container">
+        <div class="row row-cols-auto">
+          <div class="d-grid m-auto">
+            <p style="margin-top: 8rem;" class="fs-1 text-light">Al momento non hai nessun preferito</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heartbreak-fill m-auto svgHeart" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586ZM7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77Z"/>
+            </svg>
           </div>
         </div>
-    </section>
+      </div>
+      
+    <?php } ?>  
     
     <!--Footer-->
     <?php require './partials/footer.php' ?>
