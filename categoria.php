@@ -1,5 +1,6 @@
 <?php 
 
+  session_start();
   require './includes/CategoriaDAO.php';
   require './includes/CategoriaClass.php';
   require './includes/SerieDAO.php';
@@ -9,7 +10,7 @@
   $getID = $_GET['id'];
 
   
-  $num = $categoria -> getAllNum();
+  
   $AllCateg = $categoria -> getAllCateg();
   $Nome = $categoria -> getCategID($getID);
   $SerieCateg = $categoria -> getSerieCateg($getID);
@@ -52,9 +53,23 @@
             <li class="nav-item">
               <a class="nav-link" href="#footer">About us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./register.php">Accedi</a>
-            </li>
+            <?php if($_SESSION != null){ ?>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="preferiti.php">Preferiti</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="./logout.php">Logout</a>
+              </li>
+
+            <?php }else{ ?>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="./register.php">Accedi</a>
+              </li>
+
+            <?php } ?>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -74,7 +89,7 @@
       </div>
             
       <div class="row row-cols-12 ms-5 mb-5 mt-5">
-        <?php for($i=0; $i < $num; $i++){ ?>
+        <?php for($i=0; $i < count($AllCateg); $i++){ ?>
 
           <div class="col-3 mb-2">
             <a href="categoria.php?id=<?php echo $AllCateg[$i] -> getCategID() ?>">
@@ -96,8 +111,8 @@
 
       <?php for($i=0; $i < count($SerieCateg); $i++){ ?>
         <div class="col mb-5 me-4 mt-4">
+
           <a href="serie.php?id=<?php echo $SerieCateg[$i] -> getSerieID() ?>">
-            
             <img src="<?php echo $SerieCateg[$i] -> getSerieLocandina() ?>" class="radius-b locandine zoom" alt="...">
           </a>
           <div class="card-body">
@@ -109,12 +124,12 @@
             </p>
             <p class="testo"><?php echo $SerieCateg[$i] -> getSerieAnnoInizio() ?> </p>
           </div>
+
         </div>
       <?php } ?>
       </div>
     </div>
   </section>
-
 
 
   <!--Sezione footer-->

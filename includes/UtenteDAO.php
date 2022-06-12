@@ -5,7 +5,7 @@
             
             require './partials/ConnectDB.php';
 
-            $query = ("INSERT INTO utente VALUES('$email', '$password', '$nome', '$cognome')");
+            $query = ("INSERT INTO utente (mail, passwd, nome, cognome) VALUES('$email', '$password', '$nome', '$cognome')");
             mysqli_query($mysqli, $query);
 
         }
@@ -42,12 +42,12 @@
         public function getUtente($email){
             require './partials/ConnectDB.php';
             
-            $query =("SELECT * FROM utente WHERE mail='$email'");
+            $query =("SELECT idUtente FROM utente WHERE mail='$email'");
             $ris = mysqli_query($mysqli, $query);
 
             while($row = mysqli_fetch_array($ris)){   
 
-                $objUtente = new Utente($row['mail'],$row['passwd'],$row['nome'],$row['cognome']);
+                $objUtente = new getUtente($row['idUtente']);
                 return $objUtente;
             }
         }

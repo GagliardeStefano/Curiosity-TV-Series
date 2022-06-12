@@ -35,4 +35,17 @@
     }
 
 
+    Class getUtente{
+
+        private $idUtente;
+
+        function __construct($idUtente){
+
+            $this->idUtente = $idUtente;
+        }
+
+        public function getIdUtente(){
+            return $this->idUtente;
+        }
+    }
 ?>

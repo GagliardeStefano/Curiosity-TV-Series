@@ -53,6 +53,8 @@
                 }
 
                 if($arrayErroriLogin == null){
+                    session_start();
+                    $_SESSION['id'] = $utente -> getUtente($mail);
                     header("location: index.php");
                 }
             }

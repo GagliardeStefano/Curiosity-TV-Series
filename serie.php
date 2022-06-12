@@ -1,4 +1,7 @@
-<?php   
+<?php  
+  
+    session_start();
+
     header('Content-type: text/html; charset=utf-8');
 
     require './includes/SerieDAO.php';
@@ -37,6 +40,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+
+    
+    
+    <script src="./js/index.js"></script>
 </head>
 
 <body class="bg-dark">
@@ -63,9 +70,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="#footer">About us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./register.php">Accedi</a>
-              </li>
+              <?php if($_SESSION != null){ ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="preferiti.php">Preferiti</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="./logout.php">Logout</a>
+                </li>
+                
+              <?php }else{ ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./register.php">Accedi</a>
+                </li>
+
+              <?php } ?>
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -81,8 +102,8 @@
     <section >
         <div class="container">
             <div class="row row-cols-auto">
-                <div class="col-4">
-                    <div class="col">
+                <div class="col-12">
+                    <div class="col-8">
                         <h1 class="testo" style="width: 30rem;">  <?php echo $ris -> getNome() ?></h1>
                         <p class="testo"> <?php echo $ris -> getAnnoI()?>  </p>
                     </div>
@@ -95,6 +116,24 @@
                         </svg>
                         
                     </div>
+
+                    <?php if($_SESSION['email']==null){ ?>
+
+                        <div class="col-2" style="float: right;">
+                            <svg class="likeNo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heartbreak-fill" viewBox="0 0 16 16">
+
+                                <path fill-rule="evenodd" d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586ZM7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77Z"/>
+                            </svg>
+                        </div>
+
+                    <?php }else{ ?>
+                        <div class="col-2" style="float: right;">
+                            <svg onclick="like()" id="like" class="like"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                        </div>
+                    <?php } ?> 
+                    
                 </div>
             </div>
         </div>
@@ -139,16 +178,15 @@
         require './includes/EpisodiDAO.php';
 
         $stagione = new EpisodiDAO();
-        $NumStagione = $stagione -> GetNumStagioni($getID);
         $DatiStagione = $stagione -> GetStagioni($getID);
      
-        $ParametroStagione = $DatiStagione[0] -> getIdStagione();
-        $DatiEpisodi = $stagione -> GetEpisodi($ParametroStagione);
+        
+        $DatiEpisodi = $stagione -> GetEpisodi($DatiStagione[0] -> getIdStagione());
     
         $numEpisodio = 1;
     ?>
 
-    <?php if($DatiEpisodi != null){ ?>
+    <?php if(isset($DatiEpisodi)){ ?>
         
         <div id="stagioni"></div>
         <br>
@@ -165,7 +203,7 @@
 
                         <option value="">Scegli una Stagione</option>
                     
-                        <?php for($j=0; $j<$NumStagione; $j++){ ?>
+                        <?php for($j=0; $j<count($DatiStagione); $j++){ ?>
                             
                             <option value="<?php echo $DatiStagione[$j] -> getIdStagione(); ?>">
 
@@ -185,7 +223,6 @@
                                         <img src="<?php echo $DatiEpisodi[$m] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <div>
-                                               
                                                 <h5 class="card-title" style="width: 10rem;"><?php echo "  ".$DatiEpisodi[$m] -> getTitoloEpisodio()  ?></h5>
                                                 <h6 class="card-text durata"><?php echo $DatiEpisodi[$m] -> getDurataEpisodio() ?></h6>
                                             </div>
@@ -216,8 +253,6 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    
-    <script src="./js/index.js"></script>
     
 </body>
 </html>

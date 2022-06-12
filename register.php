@@ -65,9 +65,11 @@
             }
 
             if($arrayErroriReg == null){
+                session_start();
+                $_SESSION['id'] = $utente -> getUtente($mail);
                 $PassCript = md5($paswd);
                 $utente -> insertUtente($nome, $cognome, $mail, $PassCript);
-                header("location: index.php");
+                header("location: login.php");
             }
         
         }

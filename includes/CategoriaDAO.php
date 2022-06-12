@@ -67,15 +67,7 @@
         }   
 
         //Prende il numero di tutte le categorie
-        public function getAllNum()
-        {
-            require './partials/ConnectDB.php';
-
-            $query = ("SELECT * FROM categoria");
-            $ris = mysqli_query($mysqli, $query);
-
-            return $ris -> num_rows;
-        }
+        
 
         //Prendo la categoria in base all'ID
         public function getCategID($id)

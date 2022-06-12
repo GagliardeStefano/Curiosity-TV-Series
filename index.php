@@ -1,5 +1,6 @@
 <?php
 
+  session_start();
   require './includes/SerieDAO.php';
   require './includes/SerieClass.php';
   require './includes/CategoriaDAO.php';
@@ -9,7 +10,6 @@
   $categoria = new CategoriaDAO();
   $risultato = $serie -> getSerie(); 
        
-  $num = $categoria -> getAllNum();
   $AllCateg = $categoria -> getAllCateg();
       
 ?>
@@ -56,9 +56,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="#footer">About us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./register.php">Accedi</a>
-              </li>
+              <?php if($_SESSION != null){ ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="preferiti.php">Preferiti</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./logout.php">Logout</a>
+                </li>
+
+              <?php }else{ ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./register.php">Accedi</a>
+                </li>
+
+              <?php } ?>
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -79,7 +93,7 @@
       </div>
             
       <div class="row row-cols-12 ms-5 mb-5 mt-5">
-        <?php for($i=0; $i < $num; $i++){ ?>
+        <?php for($i=0; $i < count($AllCateg); $i++){ ?>
 
           <div class="col-3 mb-2">
             <a href="categoria.php?id=<?php echo $AllCateg[$i] -> getCategID() ?>">
@@ -154,15 +168,19 @@
       </section>
 
       
-      <!-- Sezione Serie TV -->
+      <!-- Sezione Serie TV TOP -->
       <div id="top"></div>
       <br>
       <section>
         <div class="container mt-5">
           <h2 class="testo text-start">Top</h2>
+          <div class="arrow">
+            <div class="arrow-top"></div>
+            <div class="arrow-bottom"></div>
+          </div>
           <div class="row row-cols-auto">
 
-            <?php for($i=0; $i < $num = $serie -> getNumSerie(); $i++){ ?>
+            <?php for($i=0; $i < $num = count($risultato); $i++){ ?>
               <div class="col mb-5 me-4">
                 <a href="./serie.php?id=<?php echo $risultato[$i] -> getID() ?>">
                   <img src=" <?php echo $risultato[$i] -> getLocandina() ?> " class="radius-b locandine" alt="...">
@@ -201,9 +219,151 @@
         </div>
       </section>
 
+      <?php $SerieAmericane = $serie -> getSerieIndexCateg(5); ?>
+
+      <!-- Sezione Serie TV Americane -->
+      <section>
+        <div class="container mt-5">
+          <h2 class="testo text-start">Serie Tv Americane</h2>
+          <div class="row row-cols-auto">
+
+            <?php for($i=0; $i < count($SerieAmericane); $i++){ ?>
+              <div class="col mb-5 me-4">
+                <a href="./serie.php?id=<?php echo $SerieAmericane[$i] -> getSerieID() ?>">
+                  <img src=" <?php echo $SerieAmericane[$i] -> getSerieLocandina() ?> " class="radius-b locandine" alt="...">
+                </a>
+                <div class="card-body">
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $SerieAmericane[$i] -> getSerieNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($SerieAmericane[$i] -> getSerieAnnoInizio())  ?></p>
+
+                  <?php  
+                    $ID = $SerieAmericane[$i] -> getSerieID();
+                    $risCateg = $categoria -> getCateg($ID);
+
+                  ?>                       
+                          
+                  <p class="testo" style="width: 10rem;">
+                    <?php 
+                      if($risCateg == null){
+
+                        echo ("");
+
+                      }else if(count($risCateg) < 2){ 
+
+                        echo($risCateg[0] -> getCategNome());
+
+                      }else{
+                      
+                        echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
+
+                      }
+                    ?>
+                  </p> 
+                </div>
+              </div>
+            <?php } ?> 
+          </div>
+        </div>
+      </section>
+
+
+      <?php $SerieHorror = $serie -> getSerieIndexCateg(17); ?>
+
+      <!-- Sezione Serie TV Horror -->
+      <section>
+        <div class="container mt-5">
+          <h2 class="testo text-start">Serie Tv Horror</h2>
+          <div class="row row-cols-auto">
+
+            <?php for($i=0; $i < count($SerieHorror); $i++){ ?>
+              <div class="col mb-5 me-4">
+                <a href="./serie.php?id=<?php echo $SerieHorror[$i] -> getSerieID() ?>">
+                  <img src=" <?php echo $SerieHorror[$i] -> getSerieLocandina() ?> " class="radius-b locandine" alt="...">
+                </a>
+                <div class="card-body">
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $SerieHorror[$i] -> getSerieNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($SerieHorror[$i] -> getSerieAnnoInizio())  ?></p>
+
+                  <?php  
+                    $ID = $SerieHorror[$i] -> getSerieID();
+                    $risCateg = $categoria -> getCateg($ID);
+
+                  ?>                       
+                          
+                  <p class="testo" style="width: 10rem;">
+                    <?php 
+                      if($risCateg == null){
+
+                        echo ("");
+
+                      }else if(count($risCateg) < 2){ 
+
+                        echo($risCateg[0] -> getCategNome());
+
+                      }else{
+                      
+                        echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
+
+                      }
+                    ?>
+                  </p> 
+                </div>
+              </div>
+            <?php } ?> 
+          </div>
+        </div>
+      </section>
+
+
+      <?php $SerieFumetti = $serie -> getSerieIndexCateg(3); ?>
+
+      <!-- Sezione Serie TV Tratte da fumetti -->
+      <section>
+        <div class="container mt-5">
+          <h2 class="testo text-start">Serie Tv Tratte da fumetti</h2>
+          <div class="row row-cols-auto">
+
+            <?php for($i=0; $i < count($SerieFumetti); $i++){ ?>
+              <div class="col mb-5 me-4">
+                <a href="./serie.php?id=<?php echo $SerieFumetti[$i] -> getSerieID() ?>">
+                  <img src=" <?php echo $SerieFumetti[$i] -> getSerieLocandina() ?> " class="radius-b locandine" alt="...">
+                </a>
+                <div class="card-body">
+                  <h4 class="testo" style="width: 10rem;"> <?php echo $SerieFumetti[$i] -> getSerieNome()  ?> </h4>
+                  <p class="testo"> <?php echo ($SerieFumetti[$i] -> getSerieAnnoInizio())  ?></p>
+
+                  <?php  
+                    $ID = $SerieFumetti[$i] -> getSerieID();
+                    $risCateg = $categoria -> getCateg($ID);
+
+                  ?>                       
+                          
+                  <p class="testo" style="width: 10rem;">
+                    <?php 
+                      if($risCateg == null){
+
+                        echo ("");
+
+                      }else if(count($risCateg) < 2){ 
+
+                        echo($risCateg[0] -> getCategNome());
+
+                      }else{
+                      
+                        echo ($risCateg[0] -> getCategNome()." / ".$risCateg[1] -> getCategNome());
+
+                      }
+                    ?>
+                  </p> 
+                </div>
+              </div>
+            <?php } ?> 
+          </div>
+        </div>
+      </section>
       
-      <!--Sezione Footer-->
-      <?php require './partials/footer.php' ?>
+    <!--Sezione Footer-->
+    <?php require './partials/footer.php' ?>
 
       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

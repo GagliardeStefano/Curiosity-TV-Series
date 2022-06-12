@@ -69,3 +69,19 @@ function episodi(xml) {
 
 }
 
+function like() {
+    var like;
+
+    like = document.getElementById("like");
+    if(like.style.fill == "grey"){
+
+        like.style.fill = "red";
+
+    }else{
+
+        like.style.fill = "grey";
+        
+    }
+    
+}
+

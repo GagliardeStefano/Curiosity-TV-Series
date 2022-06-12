@@ -72,6 +72,8 @@
                 }
 
                 if($arrayErroriUpdate == null){
+                    session_start();
+                    $_SESSION['id'] = $utente -> getUtente($mail);
                     $passCript = md5($newPwd);
                     $utente -> ChangePass($mail, $passCript);
                     header("location: login.php");

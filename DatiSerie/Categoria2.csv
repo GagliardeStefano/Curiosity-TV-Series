@@ -1,4 +1,3 @@
-Nome,IdCategoria
 Serie  crime,1
 Serie  fantasy,2
 Serie  tratte da fumetti,3
@@ -22,7 +21,7 @@ Spagnolo,20
 Giapponese,21
 Serie  tratte da manga,22
 Anime shonen,23
-Anime d'azione,24
+Anime d’azione,24
 Anime di fantascienza e fantasy,25
 Serie anime,26
 Serie  con ambientazione medica,27
@@ -39,16 +38,15 @@ Film tratti da libri,37
 Film crime,38
 Thriller,39
 Crime thriller,40
-Horror,41
 Musica e musical,42
- da guardare insieme alla famiglia,43
+Da guardare insieme alla famiglia,43
 Belga,44
 Polacco,45
 Messicano,46
 Docuserie,47
 Documentari true crime,48
 Anime drammatici,49
- per bambini,50
+Per bambini,50
 Cartoni ,51
 Coreano,52
 Italiano,53
@@ -58,7 +56,7 @@ Drammi coreani tratti da webtoon,56
 Anime tratti da light novel,57
 Drammi,58
 Musica per bambini,59
-Film d'azione,60
+Film d’azione,60
 Australiano,61
 Svedese,62
 Programmi  in lingua hindi,63
@@ -88,7 +86,7 @@ Thailandese,86
 Drammi a sfondo sociale,87
 Sudafricano,88
 Colombiano,89
-Anime su storie d'amore,90
+Anime su storie d’amore,90
 Film anime,91
 Libanese,92
 Film indipendenti,93
@@ -98,9 +96,9 @@ Reality su casa e giardino,96
 Nuova Zelanda,97
 Documentari su viaggi e avventura,98
 Doc. su scienza e natura,99
- scienza e natura,100
+Scienza e natura,100
 Talk show,101
- di varietà,102
+Di varietà,102
 Olandese,103
 Film giudiziari,104
 Film basati su storie vere,105
