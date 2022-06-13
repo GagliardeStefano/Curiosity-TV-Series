@@ -225,3 +225,29 @@ footer ion-icon{
     height: 12rem;
     width: 10rem;
 }
+
+.linkAjax{
+    text-decoration: none;
+    color: black;
+}
+
+.linkAjax:hover{
+    color: black;
+}
+
+.pAjax{
+    text-decoration: none;
+    font-size: 18px;
+    width: 1rem;
+}
+
+.starAjax{
+    color: yellow;
+    height: 23px;
+    margin-left: 5px;
+}
+
+.liAjax{
+    background-color: #212529 !important;
+    border: 1px solid rgb(255 255 255 / 13%) !important;
+}

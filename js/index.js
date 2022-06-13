@@ -103,3 +103,41 @@ if (toastTrigger) {
     toast.show()
   })
 }
+
+
+function fill(valore) {
+    
+    $('#search').val(valore);
+
+    $('#display').hide();
+}
+
+$(document).ready(function(){
+
+    $('#search').keyup(function(){
+
+        var nome = $('#search').val();
+
+        if(nome == ""){
+
+            $('#display').html("");
+
+        }else{
+
+            $.ajax({
+
+                type: "POST",
+                url: "./search/ajax.php",
+                data: {
+
+                    search: nome
+
+                },
+
+                success: function(html){
+                    $('#display').html(html).show;
+                }
+            });
+        }
+    });   
+});
