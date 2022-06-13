@@ -115,6 +115,9 @@
                             <input type="password" class="form-control" name="pwd" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
+                        <div id="passwordHelpBlock" class="form-text">
+                            La Password deve contenere almeno 8 caratteri!
+                        </div>
                     </div>
 
                     <div class="col-6">

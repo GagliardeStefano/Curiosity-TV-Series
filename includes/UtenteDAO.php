@@ -54,7 +54,7 @@
 
         public function ChangePass($email, $newPasswd){
 
-            require './partials/ConnectDB.php';
+            require '../partials/ConnectDB.php';
             
             $query = ("UPDATE utente SET passwd = '$newPasswd' WHERE mail = '$email'");
             mysqli_query($mysqli, $query);
