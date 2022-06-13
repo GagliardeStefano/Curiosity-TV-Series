@@ -29,7 +29,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+  </head>
 <body class="bg-dark">
     
   <header>
@@ -66,7 +69,7 @@
             <?php }else{ ?>
 
               <li class="nav-item">
-                  <a class="nav-link" href="./register.php">Accedi</a>
+                  <a class="nav-link" href="./login.php">Accedi</a>
               </li>
 
             <?php } ?>
@@ -79,6 +82,8 @@
       </div>
     </nav>
   </header>
+
+  <div class="float-end bg-light" id="display" style="width: 100%;"></div>
 
   <!--Sezione Banner Categorie-->
   <section>

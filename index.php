@@ -71,7 +71,7 @@
               <?php }else{ ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./register.php">Accedi</a>
+                    <a class="nav-link" href="./login.php">Accedi</a>
                 </li>
 
               <?php } ?>
