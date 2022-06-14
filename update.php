@@ -42,6 +42,7 @@
                 if($arrayErroriUpdate == null){
                     session_start();
                     $_SESSION['mail'] = $mail;
+                    $_SESSION['idUtente'] = $utente -> getUtente($mail);
                     header("location: ./invioEmail/inviaMail.php");
                 }
                 

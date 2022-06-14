@@ -1,24 +1,3 @@
-<?php
-    
-    require '../includes/UtenteDAO.php';
-    require '../includes/UtenteClass.php';
-        
-    $utente = new UtenteDAO;
-
-    $getid = $_GET['idS'];
-
-    
-    session_id($getid);
-    session_start();
-
-    if($_SESSION == null){
-    
-        header("location: ../index.php");
-    
-    }
-?>
-
-
 <html>
     <head>
         <title>Cambio Password</title>
@@ -32,8 +11,28 @@
 <body class="bg-dark">
 
     <?php
-        if(isset($_POST['passwd'], $_POST['check'])){
+    
+            $getid = $_GET['idS'];
+            $getIdUtente = $_GET['idU'];
+            
+            session_id($getid);
+            session_start();
 
+        	if(isset($_POST['passwd'], $_POST['check'])){
+
+              require '../includes/UtenteDAO.php';
+              require '../includes/UtenteClass.php';
+
+              $utente = new UtenteDAO();
+
+              echo $getid;
+              echo "Utente: ".$getIdUtente;
+
+              if($_SESSION == null){
+
+                  // header("location: ../index.php");
+
+              }
 
             $passwd = $_POST['passwd'];
             $check = $_POST['check'];
@@ -59,7 +58,7 @@
 
             if($arrayErrori == null){
                 $passwdCript = md5($passwd);
-                $utente -> ChangePass($_SESSION['mail'], $passwdCript);
+                $utente -> ChangePass($getIdUtente, $passwdCript);
                 header("location: ../login.php");
             }
         }
@@ -67,7 +66,7 @@
     ?>
 
     
-        <form action="cambioPassword.php" method="post">
+        <form action="cambioPassword.php?idS=<?php echo $getid."&idU=".$getIdUtente?>" method="post">
 
             <div class="container mt-5"> 
                 <img src="../img/logo.png" class="logo" alt=""> 

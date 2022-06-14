@@ -5,10 +5,11 @@
     if($_SESSION != null){
 
         $id = session_id();
+        $idUtente = $_SESSION['idUtente'];
 
         $to      = $_SESSION['mail'];
         $subject = 'Cambio Password';
-        $message = 'Per cambiare password cliccare il seguente link: https://curiositytvseries.altervista.org/invioEmail/cambioPassword.php?idS='.$id  ;
+        $message = 'Per cambiare password cliccare il seguente link: https://curiositytvseries.altervista.org/invioEmail/cambioPassword.php?idS='.$id.'&idU='.$idUtente;
         $headers = 'From: webmaster@example.com' . "\r\n" .
             'Reply-To: webmaster@example.com' . "\r\n" .
            'X-Mailer: PHP/' . phpversion();

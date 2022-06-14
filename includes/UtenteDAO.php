@@ -52,11 +52,11 @@
             }
         }
 
-        public function ChangePass($email, $newPasswd){
+        public function ChangePass($id, $newPasswd){
 
             require '../partials/ConnectDB.php';
             
-            $query = ("UPDATE utente SET passwd = '$newPasswd' WHERE mail = '$email'");
+            $query = ("UPDATE utente SET passwd = '$newPasswd' WHERE idUtente = '$id' ");
             mysqli_query($mysqli, $query);
         }
 
