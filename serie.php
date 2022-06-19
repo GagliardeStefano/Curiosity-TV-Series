@@ -259,8 +259,9 @@
                     
                         <section id="ContenitoreEpisodi" >
                             <div id="episodi" class="row row-cols-auto">
-                                <?php for($m = 0; $m<count($DatiEpisodi); $m++){ ?>
 
+                                
+                                <?php for($m = 0; $m<count($DatiEpisodi); $m++){ ?>
                                     
                                     <div id="card<?php echo $m ?>" class="card mt-5 testo me-4" style="width: 18rem;">
                                         <img src="<?php echo $DatiEpisodi[$m] -> getImgEpisodio(); ?>" class="card-img-top" alt="...">
